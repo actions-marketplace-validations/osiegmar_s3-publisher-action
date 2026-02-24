@@ -29,11 +29,17 @@ export class SyncFile {
     }
 
     get size(): number {
-        return (this._size = this._size || fs.statSync(this._filename).size)
+        if (this._size === undefined) {
+            this._size = fs.statSync(this._filename).size
+        }
+        return this._size
     }
 
     get checksum(): string {
-        return (this._checksum = this._checksum || generateETag(this._filename, PART_SIZE))
+        if (this._checksum === undefined) {
+            this._checksum = generateETag(this._filename, PART_SIZE)
+        }
+        return this._checksum
     }
 }
 

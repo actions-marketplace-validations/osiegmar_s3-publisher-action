@@ -101,16 +101,20 @@ async function run(): Promise<void> {
             `Complete (${newFiles.length} added, ${modifiedFiles.length} updated, ${deletedFiles.length} deleted)`
         )
     } catch (error) {
-        if (error instanceof Error) core.setFailed(error.message)
+        core.setFailed(error instanceof Error ? error.message : String(error))
     }
 }
 
-function readCacheControlConfig(config: string[]): CacheControl[] {
+export function readCacheControlConfig(config: string[]): CacheControl[] {
     const ret: CacheControl[] = []
 
     if (config) {
         for (const line of config) {
             const idx = line.indexOf('=')
+            if (idx === -1) {
+                core.warning(`Invalid cache-control config (missing '='): ${line}`)
+                continue
+            }
             ret.push(new CacheControl(line.substring(0, idx).trim(), line.substring(idx + 1).trim()))
         }
     }
@@ -118,7 +122,7 @@ function readCacheControlConfig(config: string[]): CacheControl[] {
     return ret
 }
 
-function getAllFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
+export function getAllFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
     const files = fs.readdirSync(dirPath)
 
     for (const file of files) {
@@ -133,7 +137,7 @@ function getAllFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
     return arrayOfFiles
 }
 
-function globFilter(includes: string[], excludes: string[]): (p: string) => boolean {
+export function globFilter(includes: string[], excludes: string[]): (p: string) => boolean {
     const options = {matchBase: true, dot: true}
     return (p: string) => {
         for (const exclude of excludes) {
@@ -154,7 +158,7 @@ function globFilter(includes: string[], excludes: string[]): (p: string) => bool
     }
 }
 
-function globPos(filename: string, globs: string[]): number {
+export function globPos(filename: string, globs: string[]): number {
     for (let i = 0; i < globs.length; i++) {
         if (minimatch(filename, globs[i], {matchBase: true, dot: true})) {
             return i
@@ -163,11 +167,11 @@ function globPos(filename: string, globs: string[]): number {
     return globs.length
 }
 
-function isFileChange(syncFile: SyncFile, remoteFile: RemoteFile): boolean {
+export function isFileChange(syncFile: SyncFile, remoteFile: RemoteFile): boolean {
     return isFileSizeChange(syncFile, remoteFile) || isEtagChange(syncFile, remoteFile)
 }
 
-function isFileSizeChange(syncFile: SyncFile, remoteFile: RemoteFile): boolean {
+export function isFileSizeChange(syncFile: SyncFile, remoteFile: RemoteFile): boolean {
     if (syncFile.size === remoteFile.size) {
         return false
     }
@@ -175,7 +179,7 @@ function isFileSizeChange(syncFile: SyncFile, remoteFile: RemoteFile): boolean {
     return true
 }
 
-function isEtagChange(syncFile: SyncFile, remoteFile: RemoteFile): boolean {
+export function isEtagChange(syncFile: SyncFile, remoteFile: RemoteFile): boolean {
     const localMd5: string = syncFile.checksum
     const remoteMd5: string = remoteFile.etag.substring(1, remoteFile.etag.lastIndexOf('"'))
     if (remoteMd5 === localMd5) {

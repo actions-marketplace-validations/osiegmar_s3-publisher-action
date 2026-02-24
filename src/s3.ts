@@ -107,6 +107,7 @@ export class S3 {
             core.info(`Finished uploading ${destFile}`)
         } catch (e) {
             core.error(`Error uploading to ${destFile}: ${e}`)
+            throw e
         }
     }
 
@@ -124,17 +125,26 @@ export class S3 {
             return
         }
 
-        const response = await this.client.send(
-            new DeleteObjectsCommand({
-                Bucket: this.bucket,
-                Delete: {
-                    Objects: remoteFiles.map(fn => ({Key: fn}))
-                }
-            })
-        )
+        const batchSize = 1000
+        for (let i = 0; i < remoteFiles.length; i += batchSize) {
+            const batch = remoteFiles.slice(i, i + batchSize)
+            const response = await this.client.send(
+                new DeleteObjectsCommand({
+                    Bucket: this.bucket,
+                    Delete: {
+                        Objects: batch.map(fn => ({Key: this.prefix + fn}))
+                    }
+                })
+            )
 
-        for (const e of response.Deleted ?? []) {
-            core.info(`Deleted ${e.Key}`)
+            for (const e of response.Deleted ?? []) {
+                core.info(`Deleted ${e.Key}`)
+            }
+
+            if (response.Errors && response.Errors.length > 0) {
+                const keys = response.Errors.map(e => e.Key).join(', ')
+                throw new Error(`Failed to delete objects: ${keys}`)
+            }
         }
     }
 }
