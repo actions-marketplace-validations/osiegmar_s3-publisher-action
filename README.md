@@ -134,7 +134,7 @@ policy for granting the necessary permissions.
     },
     {
       "Effect": "Allow",
-      "Action": ["s3:PutObject", "s3:DeleteObject"],
+      "Action": ["s3:PutObject", "s3:DeleteObject", "s3:AbortMultipartUpload"],
       "Resource": "arn:aws:s3:::<bucketname>/*"
     }
   ]
