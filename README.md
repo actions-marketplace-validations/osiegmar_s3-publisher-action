@@ -11,14 +11,14 @@ metadata.
 
 ## Why this action?
 
-When deploying a static website to S3, getting cache behavior right matters.
+When deploying a static site to S3, getting cache behavior right matters.
 Most S3 sync tools treat all files equally — they upload everything with the
 same (or no) `Cache-Control` header and don't consider file ordering. This often
 leads to a common workaround: running a CloudFront invalidation after every
 deployment. But CloudFront invalidation only clears the CDN cache — it cannot
 clear the browser cache of your users.
 
-A better approach starts with how modern websites are structured. Static site
+A better approach starts with how modern sites are structured. Static site
 generators and build tools typically produce two kinds of files:
 
 - **Assets** (CSS, JS, images, fonts) with content hashes in their filenames,
@@ -39,7 +39,7 @@ from the cache within minutes, and hashed assets are immutable by design. For
 more background on effective caching strategies, see
 [Caching Header Best Practices](https://simonhearne.com/2022/caching-header-best-practices/).
 
-While this action is optimized for static website publishing, it works for any
+While this action is optimized for static site publishing, it works for any
 S3 upload scenario where file-specific metadata and upload ordering matter.
 
 ## Quick start
@@ -225,7 +225,7 @@ uploaded or deleted.
       **/*.bak
 ```
 
-**Full static website deployment — upload hashed assets first with long-lived
+**Full static site deployment — upload hashed assets first with long-lived
 cache headers, use short cache times for HTML, and clean up orphaned files:**
 
 ```yaml
