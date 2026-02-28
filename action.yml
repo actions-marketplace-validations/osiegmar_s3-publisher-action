@@ -29,13 +29,15 @@ inputs:
     default: 'false'
     required: true
   wait-before-delete:
-    description: 'Milliseconds to wait before deleting files in order to prevent deletions during requests'
+    description:
+      'Milliseconds to wait before deleting files in order to prevent deletions
+      during requests'
   dry-run:
     description: 'Disable real changes'
     default: 'false'
     required: true
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
 branding:
   icon: upload-cloud
