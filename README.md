@@ -1,5 +1,11 @@
 # S3 Publisher
 
+![Linter](https://github.com/osiegmar/s3-publisher-action/actions/workflows/linter.yml/badge.svg)
+![CI](https://github.com/osiegmar/s3-publisher-action/actions/workflows/ci.yml/badge.svg)
+![Check dist/](https://github.com/osiegmar/s3-publisher-action/actions/workflows/check-dist.yml/badge.svg)
+![CodeQL](https://github.com/osiegmar/s3-publisher-action/actions/workflows/codeql-analysis.yml/badge.svg)
+![Coverage](./badges/coverage.svg)
+
 Utility to publish files to a S3 bucket while maintaining file specific
 metadata.
 

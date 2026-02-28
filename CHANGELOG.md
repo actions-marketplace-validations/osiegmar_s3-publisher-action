@@ -14,8 +14,8 @@ and this project adheres to
 
 ### Fixed
 
-- Fix `deleteFiles` not prepending S3 key prefix (orphan deletion broken
-  with prefix)
+- Fix `deleteFiles` not prepending S3 key prefix (orphan deletion broken with
+  prefix)
 - Fix upload errors being swallowed instead of propagated
 - Fix `SyncFile.size` not caching for 0-byte files
 - Fix `readCacheControlConfig` silently accepting lines without `=`

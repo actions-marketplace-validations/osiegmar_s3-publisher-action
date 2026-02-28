@@ -59693,7 +59693,10 @@ async function uploadBatch(client, files, label, config, dryPrefix) {
     try {
         const start = performance$1.now();
         await client.uploadFiles(sortByGlob(files, config.order));
-        info(`${dryPrefix}Uploaded ${files.length} ${label} files (${formatSize(files.reduce((sum, f) => sum + f.size, 0))}) in ${formatElapsed(performance$1.now() - start)}`);
+        const totalSize = files.reduce((sum, f) => sum + f.size, 0);
+        const elapsed = formatElapsed(performance$1.now() - start);
+        info(`${dryPrefix}Uploaded ${files.length} ${label} files` +
+            ` (${formatSize(totalSize)}) in ${elapsed}`);
     }
     finally {
         endGroup();
