@@ -1,56 +1,69 @@
 import fs from 'fs'
-import {generateETag} from 's3-etag'
+import { generateETag } from 's3-etag'
 
 // While 5 MB is the minimum part size for a multipart upload,
 // the current default part size used by AWS is 16 MB.
 export const PART_SIZE = 16 * 1024 * 1024
 
 export type RemoteFile = {
-    filename: string
-    size: number
-    etag: string
+  size: number
+  etag: string
 }
 
+export const GLOB_OPTIONS = { basename: true, dot: true } as const
+
 export type RemoteFiles = {
-    [key: string]: RemoteFile
+  [key: string]: RemoteFile
 }
 
 export class SyncFile {
-    private readonly _filename: string
-    private _size?: number
-    private _checksum?: string
+  private readonly _filename: string
+  private _size?: number
+  private _checksum?: string
 
-    constructor(filename: string) {
-        this._filename = filename
-    }
+  constructor(filename: string) {
+    this._filename = filename
+  }
 
-    get filename(): string {
-        return this._filename
-    }
+  get filename(): string {
+    return this._filename
+  }
 
-    get size(): number {
-        return (this._size = this._size || fs.statSync(this._filename).size)
+  get size(): number {
+    if (this._size === undefined) {
+      this._size = fs.statSync(this._filename).size
     }
+    return this._size
+  }
 
-    get checksum(): string {
-        return (this._checksum = this._checksum || generateETag(this._filename, PART_SIZE))
+  get checksum(): string {
+    if (this._checksum === undefined) {
+      this._checksum = generateETag(this._filename, PART_SIZE)
     }
+    return this._checksum
+  }
 }
 
-export class CacheControl {
-    private readonly _glob: string
-    private readonly _headerValue: string
+export type CacheControl = {
+  glob: string
+  headerValue: string
+}
 
-    constructor(glob: string, headerValue: string) {
-        this._glob = glob
-        this._headerValue = headerValue
-    }
+export function formatSize(bytes: number): string {
+  const units = ['B', 'KiB', 'MiB', 'GiB']
+  let i = 0
+  let size = bytes
+  while (size >= 1024 && i < units.length - 1) {
+    size /= 1024
+    i++
+  }
+  return i === 0 ? `${size} ${units[i]}` : `${size.toFixed(1)} ${units[i]}`
+}
 
-    get glob(): string {
-        return this._glob
-    }
+export function formatElapsed(ms: number): string {
+  return ms < 1000 ? `${Math.round(ms)}ms` : `${(ms / 1000).toFixed(1)}s`
+}
 
-    get headerValue(): string {
-        return this._headerValue
-    }
+export function dryRunPrefix(dryRun: boolean): string {
+  return dryRun ? '[DRY RUN] ' : ''
 }
