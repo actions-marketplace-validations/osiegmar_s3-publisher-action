@@ -10,7 +10,17 @@ and this project adheres to
 
 - Nothing yet
 
-## [1.2.0] - 2026-02-28
+## [2.0.0] - 2026-02-28
+
+### Changed
+
+- **BREAKING**: Upgraded GitHub Actions runtime from Node 20 to Node 24
+- Migrated to ESM (`"type": "module"`) targeting Node 24
+- Replaced ncc with Rollup for bundling
+- Replaced minimatch with picomatch for glob matching
+- Switched ESLint to flat config
+- Moved tests to `__tests__/` with Jest 30 and ESM support
+- Updated all dependencies
 
 ### Fixed
 
@@ -22,15 +32,6 @@ and this project adheres to
 - Fix `deleteFiles` exceeding AWS 1000-object limit (now batches)
 - Fix `deleteFiles` ignoring partial delete failures
 - Fix non-Error exceptions being silently dropped in `run()`
-
-### Changed
-
-- Migrated to ESM (`"type": "module"`) targeting Node 24
-- Replaced ncc with Rollup for bundling
-- Replaced minimatch with picomatch for glob matching
-- Switched ESLint to flat config
-- Moved tests to `__tests__/` with Jest 30 and ESM support
-- Updated all dependencies
 
 ### Added
 
@@ -52,7 +53,7 @@ and this project adheres to
 - Initial release
 
 [Unreleased]:
-  https://github.com/osiegmar/s3-publisher-action/compare/v1.2.0...main
-[1.2.0]: https://github.com/osiegmar/s3-publisher-action/compare/v1.1.1...v1.2.0
+  https://github.com/osiegmar/s3-publisher-action/compare/v2.0.0...main
+[2.0.0]: https://github.com/osiegmar/s3-publisher-action/compare/v1.1.1...v2.0.0
 [1.1.1]: https://github.com/osiegmar/s3-publisher-action/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/osiegmar/s3-publisher-action/compare/v1.0.0...v1.1.0
