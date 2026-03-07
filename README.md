@@ -141,6 +141,9 @@ policy for granting the necessary permissions.
 }
 ```
 
+> The `s3:DeleteObject` permission is only required when the `delete-orphaned`
+> option is enabled.
+
 ## Configuration
 
 ### Overview
