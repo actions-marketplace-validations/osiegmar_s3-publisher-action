@@ -59646,7 +59646,7 @@ function diffFiles(syncFiles, remoteFiles, config) {
         else {
             const reason = fileChangeReason(syncFile, remoteFile);
             if (reason) {
-                info(`Modified (${reason}): ${localFilename}`);
+                debug(`Modified (${reason}): ${localFilename}`);
                 modifiedFiles.push(syncFile);
             }
             else {

@@ -220,7 +220,7 @@ export function diffFiles(
     } else {
       const reason = fileChangeReason(syncFile, remoteFile)
       if (reason) {
-        core.info(`Modified (${reason}): ${localFilename}`)
+        core.debug(`Modified (${reason}): ${localFilename}`)
         modifiedFiles.push(syncFile)
       } else {
         core.debug(`Unchanged: ${localFilename}`)
