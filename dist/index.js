@@ -49685,10 +49685,35 @@ var require$$0 = {
 	"application/ace+cbor": {
 	source: "iana"
 },
+	"application/ace+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/ace-groupcomm+cbor": {
+	source: "iana"
+},
+	"application/ace-trl+cbor": {
+	source: "iana"
+},
 	"application/activemessage": {
 	source: "iana"
 },
 	"application/activity+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/aif+cbor": {
+	source: "iana"
+},
+	"application/aif+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/alto-cdni+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/alto-cdnifilter+json": {
 	source: "iana",
 	compressible: true
 },
@@ -49732,6 +49757,22 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/alto-propmap+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/alto-propmapparams+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/alto-tips+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/alto-tipsparams+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/alto-updatestreamcontrol+json": {
 	source: "iana",
 	compressible: true
@@ -49749,6 +49790,12 @@ var require$$0 = {
 		"ez"
 	]
 },
+	"application/appinstaller": {
+	compressible: false,
+	extensions: [
+		"appinstaller"
+	]
+},
 	"application/applefile": {
 	source: "iana"
 },
@@ -49756,6 +49803,18 @@ var require$$0 = {
 	source: "apache",
 	extensions: [
 		"aw"
+	]
+},
+	"application/appx": {
+	compressible: false,
+	extensions: [
+		"appx"
+	]
+},
+	"application/appxbundle": {
+	compressible: false,
+	extensions: [
+		"appxbundle"
 	]
 },
 	"application/at+jwt": {
@@ -49833,6 +49892,20 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/automationml-aml+xml": {
+	source: "iana",
+	compressible: true,
+	extensions: [
+		"aml"
+	]
+},
+	"application/automationml-amlx+zip": {
+	source: "iana",
+	compressible: false,
+	extensions: [
+		"amlx"
+	]
+},
 	"application/bacnet-xdd+zip": {
 	source: "iana",
 	compressible: false
@@ -49850,6 +49923,12 @@ var require$$0 = {
 	source: "iana",
 	charset: "UTF-8",
 	compressible: true
+},
+	"application/bufr": {
+	source: "iana"
+},
+	"application/c2pa": {
+	source: "iana"
 },
 	"application/calendar+json": {
 	source: "iana",
@@ -49892,6 +49971,11 @@ var require$$0 = {
 		"ccxml"
 	]
 },
+	"application/cda+xml": {
+	source: "iana",
+	charset: "UTF-8",
+	compressible: true
+},
 	"application/cdfx+xml": {
 	source: "iana",
 	compressible: true,
@@ -49932,6 +50016,9 @@ var require$$0 = {
 	"application/cdni": {
 	source: "iana"
 },
+	"application/ce+cbor": {
+	source: "iana"
+},
 	"application/cea": {
 	source: "iana"
 },
@@ -49946,9 +50033,15 @@ var require$$0 = {
 	"application/cfw": {
 	source: "iana"
 },
+	"application/cid-edhoc+cbor-seq": {
+	source: "iana"
+},
 	"application/city+json": {
 	source: "iana",
 	compressible: true
+},
+	"application/city+json-seq": {
+	source: "iana"
 },
 	"application/clr": {
 	source: "iana"
@@ -49968,6 +50061,9 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/coap-eap": {
+	source: "iana"
+},
 	"application/coap-group+json": {
 	source: "iana",
 	compressible: true
@@ -49976,6 +50072,9 @@ var require$$0 = {
 	source: "iana"
 },
 	"application/commonground": {
+	source: "iana"
+},
+	"application/concise-problem-details+cbor": {
 	source: "iana"
 },
 	"application/conference-info+xml": {
@@ -49989,6 +50088,9 @@ var require$$0 = {
 	source: "iana"
 },
 	"application/cose-key-set": {
+	source: "iana"
+},
+	"application/cose-x509": {
 	source: "iana"
 },
 	"application/cpl+xml": {
@@ -50018,6 +50120,19 @@ var require$$0 = {
 	extensions: [
 		"cu"
 	]
+},
+	"application/cwl": {
+	source: "iana",
+	extensions: [
+		"cwl"
+	]
+},
+	"application/cwl+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/cwl+yaml": {
+	source: "iana"
 },
 	"application/cwt": {
 	source: "iana"
@@ -50066,7 +50181,10 @@ var require$$0 = {
 	compressible: true
 },
 	"application/dicom": {
-	source: "iana"
+	source: "iana",
+	extensions: [
+		"dcm"
+	]
 },
 	"application/dicom+json": {
 	source: "iana",
@@ -50102,6 +50220,9 @@ var require$$0 = {
 	"application/dots+cbor": {
 	source: "iana"
 },
+	"application/dpop+jwt": {
+	source: "iana"
+},
 	"application/dskpp+xml": {
 	source: "iana",
 	compressible: true
@@ -50122,13 +50243,35 @@ var require$$0 = {
 	"application/dvcs": {
 	source: "iana"
 },
-	"application/ecmascript": {
+	"application/eat+cwt": {
+	source: "iana"
+},
+	"application/eat+jwt": {
+	source: "iana"
+},
+	"application/eat-bun+cbor": {
+	source: "iana"
+},
+	"application/eat-bun+json": {
 	source: "iana",
+	compressible: true
+},
+	"application/eat-ucs+cbor": {
+	source: "iana"
+},
+	"application/eat-ucs+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/ecmascript": {
+	source: "apache",
 	compressible: true,
 	extensions: [
-		"es",
 		"ecma"
 	]
+},
+	"application/edhoc+cbor-seq": {
+	source: "iana"
 },
 	"application/edi-consent": {
 	source: "iana"
@@ -50173,6 +50316,10 @@ var require$$0 = {
 	"application/emergencycalldata.ecall.msd": {
 	source: "iana"
 },
+	"application/emergencycalldata.legacyesn+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/emergencycalldata.providerinfo+xml": {
 	source: "iana",
 	compressible: true
@@ -50204,6 +50351,9 @@ var require$$0 = {
 	]
 },
 	"application/encaprtp": {
+	source: "iana"
+},
+	"application/entity-statement+jwt": {
 	source: "iana"
 },
 	"application/epp+xml": {
@@ -50241,6 +50391,12 @@ var require$$0 = {
 },
 	"application/fastsoap": {
 	source: "iana"
+},
+	"application/fdf": {
+	source: "iana",
+	extensions: [
+		"fdf"
+	]
 },
 	"application/fdt+xml": {
 	source: "iana",
@@ -50298,6 +50454,14 @@ var require$$0 = {
 	"application/geopackage+sqlite3": {
 	source: "iana"
 },
+	"application/geopose+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/geoxacml+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/geoxacml+xml": {
 	source: "iana",
 	compressible: true
@@ -50312,12 +50476,27 @@ var require$$0 = {
 		"gml"
 	]
 },
+	"application/gnap-binding-jws": {
+	source: "iana"
+},
+	"application/gnap-binding-jwsd": {
+	source: "iana"
+},
+	"application/gnap-binding-rotation-jws": {
+	source: "iana"
+},
+	"application/gnap-binding-rotation-jwsd": {
+	source: "iana"
+},
 	"application/gpx+xml": {
 	source: "apache",
 	compressible: true,
 	extensions: [
 		"gpx"
 	]
+},
+	"application/grib": {
+	source: "iana"
 },
 	"application/gxf": {
 	source: "apache",
@@ -50343,6 +50522,11 @@ var require$$0 = {
 	extensions: [
 		"hjson"
 	]
+},
+	"application/hl7v2+xml": {
+	source: "iana",
+	charset: "UTF-8",
+	compressible: true
 },
 	"application/http": {
 	source: "iana"
@@ -50418,7 +50602,7 @@ var require$$0 = {
 	]
 },
 	"application/java-archive": {
-	source: "apache",
+	source: "iana",
 	compressible: false,
 	extensions: [
 		"jar",
@@ -50441,12 +50625,11 @@ var require$$0 = {
 	]
 },
 	"application/javascript": {
-	source: "iana",
+	source: "apache",
 	charset: "UTF-8",
 	compressible: true,
 	extensions: [
-		"js",
-		"mjs"
+		"js"
 	]
 },
 	"application/jf2feed+json": {
@@ -50465,6 +50648,10 @@ var require$$0 = {
 	compressible: true
 },
 	"application/jscalendar+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/jscontact+json": {
 	source: "iana",
 	compressible: true
 },
@@ -50496,6 +50683,9 @@ var require$$0 = {
 		"jsonml"
 	]
 },
+	"application/jsonpath": {
+	source: "iana"
+},
 	"application/jwk+json": {
 	source: "iana",
 	compressible: true
@@ -50503,6 +50693,9 @@ var require$$0 = {
 	"application/jwk-set+json": {
 	source: "iana",
 	compressible: true
+},
+	"application/jwk-set+jwt": {
+	source: "iana"
 },
 	"application/jwt": {
 	source: "iana"
@@ -50532,9 +50725,19 @@ var require$$0 = {
 	"application/link-format": {
 	source: "iana"
 },
+	"application/linkset": {
+	source: "iana"
+},
+	"application/linkset+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/load-control+xml": {
 	source: "iana",
 	compressible: true
+},
+	"application/logout+jwt": {
+	source: "iana"
 },
 	"application/lost+xml": {
 	source: "iana",
@@ -50768,6 +50971,8 @@ var require$$0 = {
 	"application/mp4": {
 	source: "iana",
 	extensions: [
+		"mp4",
+		"mpg4",
 		"mp4s",
 		"m4p"
 	]
@@ -50798,6 +51003,18 @@ var require$$0 = {
 	source: "iana",
 	charset: "UTF-8",
 	compressible: true
+},
+	"application/msix": {
+	compressible: false,
+	extensions: [
+		"msix"
+	]
+},
+	"application/msixbundle": {
+	compressible: false,
+	extensions: [
+		"msixbundle"
+	]
 },
 	"application/msword": {
 	source: "iana",
@@ -50873,7 +51090,7 @@ var require$$0 = {
 },
 	"application/octet-stream": {
 	source: "iana",
-	compressible: false,
+	compressible: true,
 	extensions: [
 		"bin",
 		"dms",
@@ -50926,6 +51143,9 @@ var require$$0 = {
 		"ogx"
 	]
 },
+	"application/ohttp-keys": {
+	source: "iana"
+},
 	"application/omdoc+xml": {
 	source: "apache",
 	compressible: true,
@@ -50939,7 +51159,9 @@ var require$$0 = {
 		"onetoc",
 		"onetoc2",
 		"onetmp",
-		"onepkg"
+		"onepkg",
+		"one",
+		"onea"
 	]
 },
 	"application/opc-nodeset+xml": {
@@ -51011,8 +51233,8 @@ var require$$0 = {
 	"application/pgp-signature": {
 	source: "iana",
 	extensions: [
-		"asc",
-		"sig"
+		"sig",
+		"asc"
 	]
 },
 	"application/pics-rules": {
@@ -51117,6 +51339,15 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/private-token-issuer-directory": {
+	source: "iana"
+},
+	"application/private-token-request": {
+	source: "iana"
+},
+	"application/private-token-response": {
+	source: "iana"
+},
 	"application/problem+json": {
 	source: "iana",
 	compressible: true
@@ -51131,6 +51362,9 @@ var require$$0 = {
 	extensions: [
 		"provx"
 	]
+},
+	"application/provided-claims+jwt": {
+	source: "iana"
 },
 	"application/prs.alvestrand.titrax-sheet": {
 	source: "iana"
@@ -51149,6 +51383,29 @@ var require$$0 = {
 	source: "iana",
 	compressible: false
 },
+	"application/prs.implied-document+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/prs.implied-executable": {
+	source: "iana"
+},
+	"application/prs.implied-object+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/prs.implied-object+json-seq": {
+	source: "iana"
+},
+	"application/prs.implied-object+yaml": {
+	source: "iana"
+},
+	"application/prs.implied-structure": {
+	source: "iana"
+},
+	"application/prs.mayfile": {
+	source: "iana"
+},
 	"application/prs.nprend": {
 	source: "iana"
 },
@@ -51158,9 +51415,15 @@ var require$$0 = {
 	"application/prs.rdf-xml-crypt": {
 	source: "iana"
 },
+	"application/prs.vcfbzip2": {
+	source: "iana"
+},
 	"application/prs.xsf+xml": {
 	source: "iana",
-	compressible: true
+	compressible: true,
+	extensions: [
+		"xsf"
+	]
 },
 	"application/pskc+xml": {
 	source: "iana",
@@ -51211,11 +51474,14 @@ var require$$0 = {
 	]
 },
 	"application/remote-printing": {
-	source: "iana"
+	source: "apache"
 },
 	"application/reputon+json": {
 	source: "iana",
 	compressible: true
+},
+	"application/resolve-response+jwt": {
+	source: "iana"
 },
 	"application/resource-lists+xml": {
 	source: "iana",
@@ -51270,6 +51536,9 @@ var require$$0 = {
 		"rusd"
 	]
 },
+	"application/rpki-checklist": {
+	source: "iana"
+},
 	"application/rpki-ghostbusters": {
 	source: "iana",
 	extensions: [
@@ -51290,6 +51559,9 @@ var require$$0 = {
 	extensions: [
 		"roa"
 	]
+},
+	"application/rpki-signed-tal": {
+	source: "iana"
 },
 	"application/rpki-updown": {
 	source: "iana"
@@ -51494,7 +51766,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"application/smil": {
-	source: "iana"
+	source: "apache"
 },
 	"application/smil+xml": {
 	source: "iana",
@@ -51536,7 +51808,10 @@ var require$$0 = {
 	compressible: true
 },
 	"application/sql": {
-	source: "iana"
+	source: "iana",
+	extensions: [
+		"sql"
+	]
 },
 	"application/srgs": {
 	source: "iana",
@@ -51565,6 +51840,9 @@ var require$$0 = {
 		"ssdl"
 	]
 },
+	"application/sslkeylogfile": {
+	source: "iana"
+},
 	"application/ssml+xml": {
 	source: "iana",
 	compressible: true,
@@ -51572,9 +51850,18 @@ var require$$0 = {
 		"ssml"
 	]
 },
+	"application/st2110-41": {
+	source: "iana"
+},
 	"application/stix+json": {
 	source: "iana",
 	compressible: true
+},
+	"application/stratum": {
+	source: "iana"
+},
+	"application/swid+cbor": {
+	source: "iana"
 },
 	"application/swid+xml": {
 	source: "iana",
@@ -51664,13 +51951,21 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/tm+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/tnauthlist": {
+	source: "iana"
+},
+	"application/toc+cbor": {
 	source: "iana"
 },
 	"application/token-introspection+jwt": {
 	source: "iana"
 },
 	"application/toml": {
+	source: "iana",
 	compressible: true,
 	extensions: [
 		"toml"
@@ -51684,6 +51979,16 @@ var require$$0 = {
 	extensions: [
 		"trig"
 	]
+},
+	"application/trust-chain+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/trust-mark+jwt": {
+	source: "iana"
+},
+	"application/trust-mark-delegation+jwt": {
+	source: "iana"
 },
 	"application/ttml+xml": {
 	source: "iana",
@@ -51706,6 +52011,13 @@ var require$$0 = {
 	extensions: [
 		"ubj"
 	]
+},
+	"application/uccs+cbor": {
+	source: "iana"
+},
+	"application/ujcs+json": {
+	source: "iana",
+	compressible: true
 },
 	"application/ulpfec": {
 	source: "iana"
@@ -51732,6 +52044,15 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/vc": {
+	source: "iana"
+},
+	"application/vc+cose": {
+	source: "iana"
+},
+	"application/vc+jwt": {
+	source: "iana"
+},
 	"application/vcard+json": {
 	source: "iana",
 	compressible: true
@@ -51753,11 +52074,26 @@ var require$$0 = {
 		"1km"
 	]
 },
+	"application/vnd.1ob": {
+	source: "iana"
+},
 	"application/vnd.3gpp-prose+xml": {
 	source: "iana",
 	compressible: true
 },
+	"application/vnd.3gpp-prose-pc3a+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp-prose-pc3ach+xml": {
+	source: "iana",
+	compressible: true
+},
 	"application/vnd.3gpp-prose-pc3ch+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp-prose-pc8+xml": {
 	source: "iana",
 	compressible: true
 },
@@ -51767,11 +52103,31 @@ var require$$0 = {
 	"application/vnd.3gpp.5gnas": {
 	source: "iana"
 },
+	"application/vnd.3gpp.5gsa2x": {
+	source: "iana"
+},
+	"application/vnd.3gpp.5gsa2x-local-service-information": {
+	source: "iana"
+},
+	"application/vnd.3gpp.5gsv2x": {
+	source: "iana"
+},
+	"application/vnd.3gpp.5gsv2x-local-service-information": {
+	source: "iana"
+},
 	"application/vnd.3gpp.access-transfer-events+xml": {
 	source: "iana",
 	compressible: true
 },
 	"application/vnd.3gpp.bsf+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.crs+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.current-location-discovery+xml": {
 	source: "iana",
 	compressible: true
 },
@@ -51799,8 +52155,16 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/vnd.3gpp.mcdata-msgstore-ctrl-request+xml": {
+	source: "iana",
+	compressible: true
+},
 	"application/vnd.3gpp.mcdata-payload": {
 	source: "iana"
+},
+	"application/vnd.3gpp.mcdata-regroup+xml": {
+	source: "iana",
+	compressible: true
 },
 	"application/vnd.3gpp.mcdata-service-config+xml": {
 	source: "iana",
@@ -51837,6 +52201,10 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/vnd.3gpp.mcptt-regroup+xml": {
+	source: "iana",
+	compressible: true
+},
 	"application/vnd.3gpp.mcptt-service-config+xml": {
 	source: "iana",
 	compressible: true
@@ -51861,10 +52229,6 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
-	"application/vnd.3gpp.mcvideo-affiliation-info+xml": {
-	source: "iana",
-	compressible: true
-},
 	"application/vnd.3gpp.mcvideo-info+xml": {
 	source: "iana",
 	compressible: true
@@ -51874,6 +52238,10 @@ var require$$0 = {
 	compressible: true
 },
 	"application/vnd.3gpp.mcvideo-mbms-usage-info+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.mcvideo-regroup+xml": {
 	source: "iana",
 	compressible: true
 },
@@ -51921,8 +52289,44 @@ var require$$0 = {
 		"pvb"
 	]
 },
+	"application/vnd.3gpp.pinapp-info+xml": {
+	source: "iana",
+	compressible: true
+},
 	"application/vnd.3gpp.s1ap": {
 	source: "iana"
+},
+	"application/vnd.3gpp.seal-group-doc+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.seal-info+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.seal-location-info+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.seal-mbms-usage-info+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.seal-network-qos-management-info+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.seal-ue-config-info+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.seal-unicast-info+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.seal-user-profile-info+xml": {
+	source: "iana",
+	compressible: true
 },
 	"application/vnd.3gpp.sms": {
 	source: "iana"
@@ -51944,6 +52348,13 @@ var require$$0 = {
 	compressible: true
 },
 	"application/vnd.3gpp.ussd+xml": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.3gpp.v2x": {
+	source: "iana"
+},
+	"application/vnd.3gpp.vae-info+xml": {
 	source: "iana",
 	compressible: true
 },
@@ -51980,6 +52391,14 @@ var require$$0 = {
 	extensions: [
 		"imp"
 	]
+},
+	"application/vnd.acm.addressxfer+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.acm.chatbot+json": {
+	source: "iana",
+	compressible: true
 },
 	"application/vnd.acucobol": {
 	source: "iana",
@@ -52028,7 +52447,7 @@ var require$$0 = {
 	]
 },
 	"application/vnd.adobe.xfdf": {
-	source: "iana",
+	source: "apache",
 	extensions: [
 		"xfdf"
 	]
@@ -52082,7 +52501,7 @@ var require$$0 = {
 	]
 },
 	"application/vnd.ah-barcode": {
-	source: "iana"
+	source: "apache"
 },
 	"application/vnd.ahead.space": {
 	source: "iana",
@@ -52168,6 +52587,9 @@ var require$$0 = {
 	"application/vnd.apache.arrow.stream": {
 	source: "iana"
 },
+	"application/vnd.apache.parquet": {
+	source: "iana"
+},
 	"application/vnd.apache.thrift.binary": {
 	source: "iana"
 },
@@ -52175,6 +52597,9 @@ var require$$0 = {
 	source: "iana"
 },
 	"application/vnd.apache.thrift.json": {
+	source: "iana"
+},
+	"application/vnd.apexlang": {
 	source: "iana"
 },
 	"application/vnd.api+json": {
@@ -52227,7 +52652,7 @@ var require$$0 = {
 	]
 },
 	"application/vnd.arastra.swi": {
-	source: "iana"
+	source: "apache"
 },
 	"application/vnd.aristanetworks.swi": {
 	source: "iana",
@@ -52252,6 +52677,11 @@ var require$$0 = {
 	source: "iana",
 	extensions: [
 		"aep"
+	]
+},
+	"application/vnd.autodesk.fbx": {
+	extensions: [
+		"fbx"
 	]
 },
 	"application/vnd.autopackage": {
@@ -52291,6 +52721,14 @@ var require$$0 = {
 	"application/vnd.bekitzur-stech+json": {
 	source: "iana",
 	compressible: true
+},
+	"application/vnd.belightsoft.lhzd+zip": {
+	source: "iana",
+	compressible: false
+},
+	"application/vnd.belightsoft.lhzl+zip": {
+	source: "iana",
+	compressible: false
 },
 	"application/vnd.bint.med-content": {
 	source: "iana"
@@ -52333,6 +52771,13 @@ var require$$0 = {
 	]
 },
 	"application/vnd.byu.uapi+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.bzip3": {
+	source: "iana"
+},
+	"application/vnd.c3voc.schedule+xml": {
 	source: "iana",
 	compressible: true
 },
@@ -52423,6 +52868,16 @@ var require$$0 = {
 	extensions: [
 		"c11amz"
 	]
+},
+	"application/vnd.cncf.helm.chart.content.v1.tar+gzip": {
+	source: "iana"
+},
+	"application/vnd.cncf.helm.chart.provenance.v1.prov": {
+	source: "iana"
+},
+	"application/vnd.cncf.helm.config.v1+json": {
+	source: "iana",
+	compressible: true
 },
 	"application/vnd.coffeescript": {
 	source: "iana"
@@ -52620,6 +53075,9 @@ var require$$0 = {
 		"rdz"
 	]
 },
+	"application/vnd.datalog": {
+	source: "iana"
+},
 	"application/vnd.datapackage+json": {
 	source: "iana",
 	compressible: true
@@ -52632,6 +53090,13 @@ var require$$0 = {
 	source: "iana",
 	extensions: [
 		"dbf"
+	]
+},
+	"application/vnd.dcmp+xml": {
+	source: "iana",
+	compressible: true,
+	extensions: [
+		"dcmp"
 	]
 },
 	"application/vnd.debian.binary-package": {
@@ -52866,6 +53331,10 @@ var require$$0 = {
 	"application/vnd.efi.iso": {
 	source: "iana"
 },
+	"application/vnd.eln+zip": {
+	source: "iana",
+	compressible: false
+},
 	"application/vnd.emclient.accessrequest+xml": {
 	source: "iana",
 	compressible: true
@@ -52914,6 +53383,9 @@ var require$$0 = {
 	]
 },
 	"application/vnd.ericsson.quickcall": {
+	source: "iana"
+},
+	"application/vnd.erofs": {
 	source: "iana"
 },
 	"application/vnd.espass-espass+zip": {
@@ -53059,7 +53531,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"application/vnd.fdf": {
-	source: "iana",
+	source: "apache",
 	extensions: [
 		"fdf"
 	]
@@ -53076,6 +53548,11 @@ var require$$0 = {
 		"seed",
 		"dataless"
 	]
+},
+	"application/vnd.fdsn.stationxml+xml": {
+	source: "iana",
+	charset: "XML-BASED",
+	compressible: true
 },
 	"application/vnd.ffsns": {
 	source: "iana"
@@ -53117,14 +53594,17 @@ var require$$0 = {
 		"book"
 	]
 },
+	"application/vnd.freelog.comic": {
+	source: "iana"
+},
 	"application/vnd.frogans.fnc": {
-	source: "iana",
+	source: "apache",
 	extensions: [
 		"fnc"
 	]
 },
 	"application/vnd.frogans.ltf": {
-	source: "iana",
+	source: "apache",
 	extensions: [
 		"ltf"
 	]
@@ -53224,22 +53704,51 @@ var require$$0 = {
 		"fzs"
 	]
 },
+	"application/vnd.ga4gh.passport+jwt": {
+	source: "iana"
+},
 	"application/vnd.genomatix.tuxedo": {
 	source: "iana",
 	extensions: [
 		"txd"
 	]
 },
+	"application/vnd.genozip": {
+	source: "iana"
+},
 	"application/vnd.gentics.grd+json": {
 	source: "iana",
 	compressible: true
 },
-	"application/vnd.geo+json": {
+	"application/vnd.gentoo.catmetadata+xml": {
 	source: "iana",
 	compressible: true
 },
-	"application/vnd.geocube+xml": {
+	"application/vnd.gentoo.ebuild": {
+	source: "iana"
+},
+	"application/vnd.gentoo.eclass": {
+	source: "iana"
+},
+	"application/vnd.gentoo.gpkg": {
+	source: "iana"
+},
+	"application/vnd.gentoo.manifest": {
+	source: "iana"
+},
+	"application/vnd.gentoo.pkgmetadata+xml": {
 	source: "iana",
+	compressible: true
+},
+	"application/vnd.gentoo.xpak": {
+	source: "iana"
+},
+	"application/vnd.geo+json": {
+	source: "apache",
+	compressible: true
+},
+	"application/vnd.geocube+xml": {
+	source: "apache",
 	compressible: true
 },
 	"application/vnd.geogebra.file": {
@@ -53248,8 +53757,14 @@ var require$$0 = {
 		"ggb"
 	]
 },
-	"application/vnd.geogebra.slides": {
+	"application/vnd.geogebra.pinboard": {
 	source: "iana"
+},
+	"application/vnd.geogebra.slides": {
+	source: "iana",
+	extensions: [
+		"ggs"
+	]
 },
 	"application/vnd.geogebra.tool": {
 	source: "iana",
@@ -53297,11 +53812,59 @@ var require$$0 = {
 		"gmx"
 	]
 },
+	"application/vnd.gnu.taler.exchange+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.gnu.taler.merchant+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.google-apps.audio": {
+},
 	"application/vnd.google-apps.document": {
 	compressible: false,
 	extensions: [
 		"gdoc"
 	]
+},
+	"application/vnd.google-apps.drawing": {
+	compressible: false,
+	extensions: [
+		"gdraw"
+	]
+},
+	"application/vnd.google-apps.drive-sdk": {
+	compressible: false
+},
+	"application/vnd.google-apps.file": {
+},
+	"application/vnd.google-apps.folder": {
+	compressible: false
+},
+	"application/vnd.google-apps.form": {
+	compressible: false,
+	extensions: [
+		"gform"
+	]
+},
+	"application/vnd.google-apps.fusiontable": {
+},
+	"application/vnd.google-apps.jam": {
+	compressible: false,
+	extensions: [
+		"gjam"
+	]
+},
+	"application/vnd.google-apps.mail-layout": {
+},
+	"application/vnd.google-apps.map": {
+	compressible: false,
+	extensions: [
+		"gmap"
+	]
+},
+	"application/vnd.google-apps.photo": {
 },
 	"application/vnd.google-apps.presentation": {
 	compressible: false,
@@ -53309,11 +53872,29 @@ var require$$0 = {
 		"gslides"
 	]
 },
+	"application/vnd.google-apps.script": {
+	compressible: false,
+	extensions: [
+		"gscript"
+	]
+},
+	"application/vnd.google-apps.shortcut": {
+},
+	"application/vnd.google-apps.site": {
+	compressible: false,
+	extensions: [
+		"gsite"
+	]
+},
 	"application/vnd.google-apps.spreadsheet": {
 	compressible: false,
 	extensions: [
 		"gsheet"
 	]
+},
+	"application/vnd.google-apps.unknown": {
+},
+	"application/vnd.google-apps.video": {
 },
 	"application/vnd.google-earth.kml+xml": {
 	source: "iana",
@@ -53330,7 +53911,7 @@ var require$$0 = {
 	]
 },
 	"application/vnd.gov.sk.e-form+xml": {
-	source: "iana",
+	source: "apache",
 	compressible: true
 },
 	"application/vnd.gov.sk.e-form+zip": {
@@ -53338,6 +53919,13 @@ var require$$0 = {
 	compressible: false
 },
 	"application/vnd.gov.sk.xmldatacontainer+xml": {
+	source: "iana",
+	compressible: true,
+	extensions: [
+		"xdcf"
+	]
+},
+	"application/vnd.gpxsee.map+xml": {
 	source: "iana",
 	compressible: true
 },
@@ -53437,16 +54025,6 @@ var require$$0 = {
 		"les"
 	]
 },
-	"application/vnd.hl7cda+xml": {
-	source: "iana",
-	charset: "UTF-8",
-	compressible: true
-},
-	"application/vnd.hl7v2+xml": {
-	source: "iana",
-	charset: "UTF-8",
-	compressible: true
-},
 	"application/vnd.hp-hpgl": {
 	source: "iana",
 	extensions: [
@@ -53483,6 +54061,9 @@ var require$$0 = {
 		"pclxl"
 	]
 },
+	"application/vnd.hsl": {
+	source: "iana"
+},
 	"application/vnd.httphone": {
 	source: "iana"
 },
@@ -53508,7 +54089,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"application/vnd.ibm.afplinedata": {
-	source: "iana"
+	source: "apache"
 },
 	"application/vnd.ibm.electronic-media": {
 	source: "iana"
@@ -53520,7 +54101,7 @@ var require$$0 = {
 	]
 },
 	"application/vnd.ibm.modcap": {
-	source: "iana",
+	source: "apache",
 	extensions: [
 		"afp",
 		"listafp",
@@ -53613,7 +54194,7 @@ var require$$0 = {
 	compressible: true
 },
 	"application/vnd.informix-visionary": {
-	source: "iana"
+	source: "apache"
 },
 	"application/vnd.infotech.project": {
 	source: "iana"
@@ -53661,6 +54242,21 @@ var require$$0 = {
 	extensions: [
 		"qfx"
 	]
+},
+	"application/vnd.ipfs.ipns-record": {
+	source: "iana"
+},
+	"application/vnd.ipld.car": {
+	source: "iana"
+},
+	"application/vnd.ipld.dag-cbor": {
+	source: "iana"
+},
+	"application/vnd.ipld.dag-json": {
+	source: "iana"
+},
+	"application/vnd.ipld.raw": {
+	source: "iana"
 },
 	"application/vnd.iptc.g2.catalogitem+xml": {
 	source: "iana",
@@ -53827,11 +54423,21 @@ var require$$0 = {
 		"kwt"
 	]
 },
+	"application/vnd.kdl": {
+	source: "iana"
+},
 	"application/vnd.kenameaapp": {
 	source: "iana",
 	extensions: [
 		"htke"
 	]
+},
+	"application/vnd.keyman.kmp+zip": {
+	source: "iana",
+	compressible: false
+},
+	"application/vnd.keyman.kmx": {
+	source: "iana"
 },
 	"application/vnd.kidspiration": {
 	source: "iana",
@@ -53876,6 +54482,9 @@ var require$$0 = {
 	]
 },
 	"application/vnd.laszip": {
+	source: "iana"
+},
+	"application/vnd.ldev.productlicensing": {
 	source: "iana"
 },
 	"application/vnd.leap+json": {
@@ -53992,6 +54601,12 @@ var require$$0 = {
 		"mcd"
 	]
 },
+	"application/vnd.mdl": {
+	source: "iana"
+},
+	"application/vnd.mdl-mbsdf": {
+	source: "iana"
+},
 	"application/vnd.medcalcdata": {
 	source: "iana",
 	extensions: [
@@ -54004,7 +54619,13 @@ var require$$0 = {
 		"cdkey"
 	]
 },
+	"application/vnd.medicalholodeck.recordxr": {
+	source: "iana"
+},
 	"application/vnd.meridian-slingshot": {
+	source: "iana"
+},
+	"application/vnd.mermaid": {
 	source: "iana"
 },
 	"application/vnd.mfer": {
@@ -54098,6 +54719,9 @@ var require$$0 = {
 	extensions: [
 		"txf"
 	]
+},
+	"application/vnd.modl": {
+	source: "iana"
 },
 	"application/vnd.mophun.application": {
 	source: "iana",
@@ -54324,6 +54948,11 @@ var require$$0 = {
 	"application/vnd.ms-tnef": {
 	source: "iana"
 },
+	"application/vnd.ms-visio.viewer": {
+	extensions: [
+		"vdx"
+	]
+},
 	"application/vnd.ms-windows.devicepairing": {
 	source: "iana"
 },
@@ -54391,6 +55020,9 @@ var require$$0 = {
 		"mseq"
 	]
 },
+	"application/vnd.msgpack": {
+	source: "iana"
+},
 	"application/vnd.msign": {
 	source: "iana"
 },
@@ -54424,6 +55056,24 @@ var require$$0 = {
 	"application/vnd.nacamar.ybrid+json": {
 	source: "iana",
 	compressible: true
+},
+	"application/vnd.nato.bindingdataobject+cbor": {
+	source: "iana"
+},
+	"application/vnd.nato.bindingdataobject+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.nato.bindingdataobject+xml": {
+	source: "iana",
+	compressible: true,
+	extensions: [
+		"bdo"
+	]
+},
+	"application/vnd.nato.openxmlformats-package.iepd+zip": {
+	source: "iana",
+	compressible: false
 },
 	"application/vnd.ncd.control": {
 	source: "iana"
@@ -54526,7 +55176,7 @@ var require$$0 = {
 	]
 },
 	"application/vnd.nokia.n-gage.symbian.install": {
-	source: "iana",
+	source: "apache",
 	extensions: [
 		"n-gage"
 	]
@@ -54586,6 +55236,19 @@ var require$$0 = {
 	"application/vnd.ntt-local.sip-ta_tcp_stream": {
 	source: "iana"
 },
+	"application/vnd.oai.workflows": {
+	source: "iana"
+},
+	"application/vnd.oai.workflows+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/vnd.oai.workflows+yaml": {
+	source: "iana"
+},
+	"application/vnd.oasis.opendocument.base": {
+	source: "iana"
+},
 	"application/vnd.oasis.opendocument.chart": {
 	source: "iana",
 	extensions: [
@@ -54599,7 +55262,7 @@ var require$$0 = {
 	]
 },
 	"application/vnd.oasis.opendocument.database": {
-	source: "iana",
+	source: "apache",
 	extensions: [
 		"odb"
 	]
@@ -54679,6 +55342,9 @@ var require$$0 = {
 	extensions: [
 		"odm"
 	]
+},
+	"application/vnd.oasis.opendocument.text-master-template": {
+	source: "iana"
 },
 	"application/vnd.oasis.opendocument.text-template": {
 	source: "iana",
@@ -54768,7 +55434,7 @@ var require$$0 = {
 	compressible: true
 },
 	"application/vnd.oma.bcast.drm-trigger+xml": {
-	source: "iana",
+	source: "apache",
 	compressible: true
 },
 	"application/vnd.oma.bcast.imd+xml": {
@@ -54799,7 +55465,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"application/vnd.oma.bcast.smartcard-trigger+xml": {
-	source: "iana",
+	source: "apache",
 	compressible: true
 },
 	"application/vnd.oma.bcast.sprov+xml": {
@@ -54931,6 +55597,9 @@ var require$$0 = {
 	"application/vnd.onepagertatx": {
 	source: "iana"
 },
+	"application/vnd.onvif.metadata": {
+	source: "iana"
+},
 	"application/vnd.openblox.game+xml": {
 	source: "iana",
 	compressible: true,
@@ -54959,6 +55628,10 @@ var require$$0 = {
 },
 	"application/vnd.opentimestamps.ots": {
 	source: "iana"
+},
+	"application/vnd.openvpi.dspx+json": {
+	source: "iana",
+	compressible: true
 },
 	"application/vnd.openxmlformats-officedocument.custom-properties+xml": {
 	source: "iana",
@@ -55412,6 +56085,21 @@ var require$$0 = {
 		"box"
 	]
 },
+	"application/vnd.procrate.brushset": {
+	extensions: [
+		"brushset"
+	]
+},
+	"application/vnd.procreate.brush": {
+	extensions: [
+		"brush"
+	]
+},
+	"application/vnd.procreate.dream": {
+	extensions: [
+		"drm"
+	]
+},
 	"application/vnd.proteus.magazine": {
 	source: "iana",
 	extensions: [
@@ -55419,6 +56107,9 @@ var require$$0 = {
 	]
 },
 	"application/vnd.psfs": {
+	source: "iana"
+},
+	"application/vnd.pt.mundusmundi": {
 	source: "iana"
 },
 	"application/vnd.publishare-delta-tree": {
@@ -55438,7 +56129,10 @@ var require$$0 = {
 },
 	"application/vnd.pwg-xhtml-print+xml": {
 	source: "iana",
-	compressible: true
+	compressible: true,
+	extensions: [
+		"xhtm"
+	]
 },
 	"application/vnd.qualcomm.brew-app-res": {
 	source: "iana"
@@ -55550,6 +56244,9 @@ var require$$0 = {
 	extensions: [
 		"musicxml"
 	]
+},
+	"application/vnd.relpipe": {
+	source: "iana"
 },
 	"application/vnd.renlearn.rlprint": {
 	source: "iana"
@@ -55735,6 +56432,9 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/vnd.sketchometry": {
+	source: "iana"
+},
 	"application/vnd.smaf": {
 	source: "iana",
 	extensions: [
@@ -55749,6 +56449,9 @@ var require$$0 = {
 	extensions: [
 		"teacher"
 	]
+},
+	"application/vnd.smintio.portals.archive": {
+	source: "iana"
 },
 	"application/vnd.snesdev-page-table": {
 	source: "iana"
@@ -55930,6 +56633,9 @@ var require$$0 = {
 	"application/vnd.swiftview-ics": {
 	source: "iana"
 },
+	"application/vnd.sybyl.mol2": {
+	source: "iana"
+},
 	"application/vnd.sycle+xml": {
 	source: "iana",
 	compressible: true
@@ -56062,6 +56768,10 @@ var require$$0 = {
 		"ufdl"
 	]
 },
+	"application/vnd.uic.osdm+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/vnd.uiq.theme": {
 	source: "iana",
 	extensions: [
@@ -56084,7 +56794,8 @@ var require$$0 = {
 	source: "iana",
 	compressible: true,
 	extensions: [
-		"uoml"
+		"uoml",
+		"uo"
 	]
 },
 	"application/vnd.uplanet.alert": {
@@ -56148,6 +56859,13 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/vnd.veraison.tsm-report+cbor": {
+	source: "iana"
+},
+	"application/vnd.veraison.tsm-report+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/vnd.verimatrix.vcas": {
 	source: "iana"
 },
@@ -56170,7 +56888,9 @@ var require$$0 = {
 		"vsd",
 		"vst",
 		"vss",
-		"vsw"
+		"vsw",
+		"vsdx",
+		"vtx"
 	]
 },
 	"application/vnd.visionary": {
@@ -56180,6 +56900,9 @@ var require$$0 = {
 	]
 },
 	"application/vnd.vividence.scriptfile": {
+	source: "iana"
+},
+	"application/vnd.vocalshaper.vsp4": {
 	source: "iana"
 },
 	"application/vnd.vsf": {
@@ -56212,6 +56935,9 @@ var require$$0 = {
 	extensions: [
 		"wmlsc"
 	]
+},
+	"application/vnd.wasmflow.wafl": {
+	source: "iana"
 },
 	"application/vnd.webturbo": {
 	source: "iana",
@@ -56248,6 +56974,9 @@ var require$$0 = {
 	extensions: [
 		"nbp"
 	]
+},
+	"application/vnd.wordlift": {
+	source: "iana"
 },
 	"application/vnd.wordperfect": {
 	source: "iana",
@@ -56290,6 +57019,12 @@ var require$$0 = {
 	extensions: [
 		"xar"
 	]
+},
+	"application/vnd.xarin.cpj": {
+	source: "iana"
+},
+	"application/vnd.xecrets-encrypted": {
+	source: "iana"
 },
 	"application/vnd.xfdl": {
 	source: "iana",
@@ -56380,9 +57115,6 @@ var require$$0 = {
 		"cmp"
 	]
 },
-	"application/vnd.youtube.yt": {
-	source: "iana"
-},
 	"application/vnd.zul": {
 	source: "iana",
 	extensions: [
@@ -56407,6 +57139,19 @@ var require$$0 = {
 	"application/voucher-cms+json": {
 	source: "iana",
 	compressible: true
+},
+	"application/voucher-jws+json": {
+	source: "iana",
+	compressible: true
+},
+	"application/vp": {
+	source: "iana"
+},
+	"application/vp+cose": {
+	source: "iana"
+},
+	"application/vp+jwt": {
+	source: "iana"
 },
 	"application/vq-rtcpxr": {
 	source: "iana"
@@ -56540,6 +57285,11 @@ var require$$0 = {
 		"torrent"
 	]
 },
+	"application/x-blender": {
+	extensions: [
+		"blend"
+	]
+},
 	"application/x-blorb": {
 	source: "apache",
 	extensions: [
@@ -56609,6 +57359,11 @@ var require$$0 = {
 },
 	"application/x-compress": {
 	source: "apache"
+},
+	"application/x-compressed": {
+	extensions: [
+		"rar"
+	]
 },
 	"application/x-conference": {
 	source: "apache",
@@ -56822,6 +57577,12 @@ var require$$0 = {
 	source: "apache",
 	extensions: [
 		"install"
+	]
+},
+	"application/x-ipynb+json": {
+	compressible: true,
+	extensions: [
+		"ipynb"
 	]
 },
 	"application/x-iso9660-image": {
@@ -57329,6 +58090,11 @@ var require$$0 = {
 		"xz"
 	]
 },
+	"application/x-zip-compressed": {
+	extensions: [
+		"zip"
+	]
+},
 	"application/x-zmachine": {
 	source: "apache",
 	extensions: [
@@ -57408,6 +58174,12 @@ var require$$0 = {
 	compressible: true,
 	extensions: [
 		"xenc"
+	]
+},
+	"application/xfdf": {
+	source: "iana",
+	extensions: [
+		"xfdf"
 	]
 },
 	"application/xhtml+xml": {
@@ -57496,11 +58268,17 @@ var require$$0 = {
 		"xvm"
 	]
 },
+	"application/yaml": {
+	source: "iana"
+},
 	"application/yang": {
 	source: "iana",
 	extensions: [
 		"yang"
 	]
+},
+	"application/yang-data+cbor": {
+	source: "iana"
 },
 	"application/yang-data+json": {
 	source: "iana",
@@ -57518,6 +58296,10 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"application/yang-sid+json": {
+	source: "iana",
+	compressible: true
+},
 	"application/yin+xml": {
 	source: "iana",
 	compressible: true,
@@ -57530,6 +58312,11 @@ var require$$0 = {
 	compressible: false,
 	extensions: [
 		"zip"
+	]
+},
+	"application/zip+dotlottie": {
+	extensions: [
+		"lottie"
 	]
 },
 	"application/zlib": {
@@ -57555,7 +58342,11 @@ var require$$0 = {
 	source: "iana"
 },
 	"audio/aac": {
-	source: "iana"
+	source: "iana",
+	extensions: [
+		"adts",
+		"aac"
+	]
 },
 	"audio/ac3": {
 	source: "iana"
@@ -57685,6 +58476,9 @@ var require$$0 = {
 	"audio/evs": {
 	source: "iana"
 },
+	"audio/flac": {
+	source: "iana"
+},
 	"audio/flexfec": {
 	source: "iana"
 },
@@ -57767,6 +58561,9 @@ var require$$0 = {
 	"audio/lpc": {
 	source: "iana"
 },
+	"audio/matroska": {
+	source: "iana"
+},
 	"audio/melp": {
 	source: "iana"
 },
@@ -57791,6 +58588,9 @@ var require$$0 = {
 		"rmi"
 	]
 },
+	"audio/midi-clip": {
+	source: "iana"
+},
 	"audio/mobile-xmf": {
 	source: "iana",
 	extensions: [
@@ -57808,7 +58608,8 @@ var require$$0 = {
 	compressible: false,
 	extensions: [
 		"m4a",
-		"mp4a"
+		"mp4a",
+		"m4b"
 	]
 },
 	"audio/mp4a-latm": {
@@ -58096,7 +58897,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"audio/vnd.qcelp": {
-	source: "iana"
+	source: "apache"
 },
 	"audio/vnd.rhetorex.32kadpcm": {
 	source: "iana"
@@ -58318,6 +59119,7 @@ var require$$0 = {
 	]
 },
 	"image/apng": {
+	source: "iana",
 	compressible: false,
 	extensions: [
 		"apng"
@@ -58346,7 +59148,8 @@ var require$$0 = {
 	source: "iana",
 	compressible: true,
 	extensions: [
-		"bmp"
+		"bmp",
+		"dib"
 	]
 },
 	"image/cgm": {
@@ -58359,6 +59162,12 @@ var require$$0 = {
 	source: "iana",
 	extensions: [
 		"drle"
+	]
+},
+	"image/dpx": {
+	source: "iana",
+	extensions: [
+		"dpx"
 	]
 },
 	"image/emf": {
@@ -58416,16 +59225,25 @@ var require$$0 = {
 		"hej2"
 	]
 },
-	"image/hsj2": {
-	source: "iana",
-	extensions: [
-		"hsj2"
-	]
-},
 	"image/ief": {
 	source: "iana",
 	extensions: [
 		"ief"
+	]
+},
+	"image/j2c": {
+	source: "iana"
+},
+	"image/jaii": {
+	source: "iana",
+	extensions: [
+		"jaii"
+	]
+},
+	"image/jais": {
+	source: "iana",
+	extensions: [
+		"jais"
 	]
 },
 	"image/jls": {
@@ -58446,8 +59264,8 @@ var require$$0 = {
 	source: "iana",
 	compressible: false,
 	extensions: [
-		"jpeg",
 		"jpg",
+		"jpeg",
 		"jpe"
 	]
 },
@@ -58467,7 +59285,8 @@ var require$$0 = {
 	source: "iana",
 	compressible: false,
 	extensions: [
-		"jpm"
+		"jpm",
+		"jpgm"
 	]
 },
 	"image/jpx": {
@@ -58476,6 +59295,12 @@ var require$$0 = {
 	extensions: [
 		"jpx",
 		"jpf"
+	]
+},
+	"image/jxl": {
+	source: "iana",
+	extensions: [
+		"jxl"
 	]
 },
 	"image/jxr": {
@@ -58536,7 +59361,10 @@ var require$$0 = {
 	source: "iana"
 },
 	"image/pjpeg": {
-	compressible: false
+	compressible: false,
+	extensions: [
+		"jfif"
+	]
 },
 	"image/png": {
 	source: "iana",
@@ -58548,7 +59376,8 @@ var require$$0 = {
 	"image/prs.btif": {
 	source: "iana",
 	extensions: [
-		"btif"
+		"btif",
+		"btf"
 	]
 },
 	"image/prs.pti": {
@@ -58606,6 +59435,9 @@ var require$$0 = {
 	extensions: [
 		"azv"
 	]
+},
+	"image/vnd.clip": {
+	source: "iana"
 },
 	"image/vnd.cns.inf2": {
 	source: "iana"
@@ -58766,7 +59598,7 @@ var require$$0 = {
 	]
 },
 	"image/webp": {
-	source: "apache",
+	source: "iana",
 	extensions: [
 		"webp"
 	]
@@ -58783,6 +59615,11 @@ var require$$0 = {
 		"3ds"
 	]
 },
+	"image/x-adobe-dng": {
+	extensions: [
+		"dng"
+	]
+},
 	"image/x-cmu-raster": {
 	source: "apache",
 	extensions: [
@@ -58794,6 +59631,9 @@ var require$$0 = {
 	extensions: [
 		"cmx"
 	]
+},
+	"image/x-emf": {
+	source: "iana"
 },
 	"image/x-freehand": {
 	source: "apache",
@@ -58880,6 +59720,9 @@ var require$$0 = {
 		"tga"
 	]
 },
+	"image/x-wmf": {
+	source: "iana"
+},
 	"image/x-xbitmap": {
 	source: "apache",
 	extensions: [
@@ -58900,6 +59743,9 @@ var require$$0 = {
 	extensions: [
 		"xwd"
 	]
+},
+	"message/bhttp": {
+	source: "iana"
 },
 	"message/cpim": {
 	source: "iana"
@@ -58951,7 +59797,16 @@ var require$$0 = {
 	source: "iana",
 	compressible: true
 },
+	"message/mls": {
+	source: "iana"
+},
 	"message/news": {
+	source: "apache"
+},
+	"message/ohttp-req": {
+	source: "iana"
+},
+	"message/ohttp-res": {
 	source: "iana"
 },
 	"message/partial": {
@@ -58963,11 +59818,13 @@ var require$$0 = {
 	compressible: true,
 	extensions: [
 		"eml",
-		"mime"
+		"mime",
+		"mht",
+		"mhtml"
 	]
 },
 	"message/s-http": {
-	source: "iana"
+	source: "apache"
 },
 	"message/sip": {
 	source: "iana"
@@ -58979,7 +59836,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"message/vnd.si.simp": {
-	source: "iana"
+	source: "apache"
 },
 	"message/vnd.wfa.wsc": {
 	source: "iana",
@@ -59018,6 +59875,12 @@ var require$$0 = {
 		"iges"
 	]
 },
+	"model/jt": {
+	source: "iana",
+	extensions: [
+		"jt"
+	]
+},
 	"model/mesh": {
 	source: "iana",
 	compressible: false,
@@ -59039,8 +59902,21 @@ var require$$0 = {
 		"obj"
 	]
 },
+	"model/prc": {
+	source: "iana",
+	extensions: [
+		"prc"
+	]
+},
 	"model/step": {
-	source: "iana"
+	source: "iana",
+	extensions: [
+		"step",
+		"stp",
+		"stpnc",
+		"p21",
+		"210"
+	]
 },
 	"model/step+xml": {
 	source: "iana",
@@ -59067,6 +59943,24 @@ var require$$0 = {
 	source: "iana",
 	extensions: [
 		"stl"
+	]
+},
+	"model/u3d": {
+	source: "iana",
+	extensions: [
+		"u3d"
+	]
+},
+	"model/vnd.bary": {
+	source: "iana",
+	extensions: [
+		"bary"
+	]
+},
+	"model/vnd.cld": {
+	source: "iana",
+	extensions: [
+		"cld"
 	]
 },
 	"model/vnd.collada+xml": {
@@ -59132,7 +60026,11 @@ var require$$0 = {
 	]
 },
 	"model/vnd.pytha.pyox": {
-	source: "iana"
+	source: "iana",
+	extensions: [
+		"pyo",
+		"pyox"
+	]
 },
 	"model/vnd.rosette.annotated-data-model": {
 	source: "iana"
@@ -59141,6 +60039,12 @@ var require$$0 = {
 	source: "iana",
 	extensions: [
 		"vds"
+	]
+},
+	"model/vnd.usda": {
+	source: "iana",
+	extensions: [
+		"usda"
 	]
 },
 	"model/vnd.usdz+zip": {
@@ -59323,7 +60227,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"text/ecmascript": {
-	source: "iana"
+	source: "apache"
 },
 	"text/encaprtp": {
 	source: "iana"
@@ -59346,6 +60250,9 @@ var require$$0 = {
 	"text/grammar-ref-list": {
 	source: "iana"
 },
+	"text/hl7v2": {
+	source: "iana"
+},
 	"text/html": {
 	source: "iana",
 	compressible: true,
@@ -59362,7 +60269,12 @@ var require$$0 = {
 },
 	"text/javascript": {
 	source: "iana",
-	compressible: true
+	charset: "UTF-8",
+	compressible: true,
+	extensions: [
+		"js",
+		"mjs"
+	]
 },
 	"text/jcr-cnd": {
 	source: "iana"
@@ -59383,8 +60295,8 @@ var require$$0 = {
 	source: "iana",
 	compressible: true,
 	extensions: [
-		"markdown",
-		"md"
+		"md",
+		"markdown"
 	]
 },
 	"text/mathml": {
@@ -59445,6 +60357,9 @@ var require$$0 = {
 	]
 },
 	"text/prs.prop.logic": {
+	source: "iana"
+},
+	"text/prs.texi": {
 	source: "iana"
 },
 	"text/raptorfec": {
@@ -59613,6 +60528,9 @@ var require$$0 = {
 	source: "iana",
 	charset: "UTF-8"
 },
+	"text/vnd.exchangeable": {
+	source: "iana"
+},
 	"text/vnd.familysearch.gedcom": {
 	source: "iana",
 	extensions: [
@@ -59686,7 +60604,7 @@ var require$$0 = {
 	source: "iana"
 },
 	"text/vnd.si.uricatalogue": {
-	source: "iana"
+	source: "apache"
 },
 	"text/vnd.sosi": {
 	source: "iana"
@@ -59701,6 +60619,9 @@ var require$$0 = {
 	"text/vnd.trolltech.linguist": {
 	source: "iana",
 	charset: "UTF-8"
+},
+	"text/vnd.vcf": {
+	source: "iana"
 },
 	"text/vnd.wap.si": {
 	source: "iana"
@@ -59720,12 +60641,21 @@ var require$$0 = {
 		"wmls"
 	]
 },
+	"text/vnd.zoo.kcl": {
+	source: "iana"
+},
 	"text/vtt": {
 	source: "iana",
 	charset: "UTF-8",
 	compressible: true,
 	extensions: [
 		"vtt"
+	]
+},
+	"text/wgsl": {
+	source: "iana",
+	extensions: [
+		"wgsl"
 	]
 },
 	"text/x-asm": {
@@ -59921,6 +60851,9 @@ var require$$0 = {
 	"video/encaprtp": {
 	source: "iana"
 },
+	"video/evc": {
+	source: "iana"
+},
 	"video/ffv1": {
 	source: "iana"
 },
@@ -59960,6 +60893,9 @@ var require$$0 = {
 	"video/h265": {
 	source: "iana"
 },
+	"video/h266": {
+	source: "iana"
+},
 	"video/iso.segment": {
 	source: "iana",
 	extensions: [
@@ -59985,6 +60921,16 @@ var require$$0 = {
 	"video/jxsv": {
 	source: "iana"
 },
+	"video/lottie+json": {
+	source: "iana",
+	compressible: true
+},
+	"video/matroska": {
+	source: "iana"
+},
+	"video/matroska-3d": {
+	source: "iana"
+},
 	"video/mj2": {
 	source: "iana",
 	extensions: [
@@ -60001,7 +60947,10 @@ var require$$0 = {
 	"video/mp2t": {
 	source: "iana",
 	extensions: [
-		"ts"
+		"ts",
+		"m2t",
+		"m2ts",
+		"mts"
 	]
 },
 	"video/mp4": {
@@ -60204,11 +61153,14 @@ var require$$0 = {
 	"video/vnd.objectvideo": {
 	source: "iana"
 },
+	"video/vnd.planar": {
+	source: "iana"
+},
 	"video/vnd.radgamettools.bink": {
 	source: "iana"
 },
 	"video/vnd.radgamettools.smacker": {
-	source: "iana"
+	source: "apache"
 },
 	"video/vnd.sealed.mpeg1": {
 	source: "iana"
@@ -60382,6 +61334,72 @@ function requireMimeDb () {
 	return mimeDb;
 }
 
+var mimeScore;
+var hasRequiredMimeScore;
+
+function requireMimeScore () {
+	if (hasRequiredMimeScore) return mimeScore;
+	hasRequiredMimeScore = 1;
+	// 'mime-score' back-ported to CommonJS
+
+	// Score RFC facets (see https://tools.ietf.org/html/rfc6838#section-3)
+	var FACET_SCORES = {
+	  'prs.': 100,
+	  'x-': 200,
+	  'x.': 300,
+	  'vnd.': 400,
+	  default: 900
+	};
+
+	// Score mime source (Logic originally from `jshttp/mime-types` module)
+	var SOURCE_SCORES = {
+	  nginx: 10,
+	  apache: 20,
+	  iana: 40,
+	  default: 30 // definitions added by `jshttp/mime-db` project?
+	};
+
+	var TYPE_SCORES = {
+	  // prefer application/xml over text/xml
+	  // prefer application/rtf over text/rtf
+	  application: 1,
+
+	  // prefer font/woff over application/font-woff
+	  font: 2,
+
+	  // prefer video/mp4 over audio/mp4 over application/mp4
+	  // See https://www.rfc-editor.org/rfc/rfc4337.html#section-2
+	  audio: 2,
+	  video: 3,
+
+	  default: 0
+	};
+
+	/**
+	 * Get each component of the score for a mime type.  The sum of these is the
+	 * total score.  The higher the score, the more "official" the type.
+	 */
+	mimeScore = function mimeScore (mimeType, source = 'default') {
+	  if (mimeType === 'application/octet-stream') {
+	    return 0
+	  }
+
+	  const [type, subtype] = mimeType.split('/');
+
+	  const facet = subtype.replace(/(\.|x-).*/, '$1');
+
+	  const facetScore = FACET_SCORES[facet] || FACET_SCORES.default;
+	  const sourceScore = SOURCE_SCORES[source] || SOURCE_SCORES.default;
+	  const typeScore = TYPE_SCORES[type] || TYPE_SCORES.default;
+
+	  // All else being equal prefer shorter types
+	  const lengthScore = 1 - mimeType.length / 100;
+
+	  return facetScore + sourceScore + typeScore + lengthScore
+	};
+	return mimeScore;
+}
+
 /*!
  * mime-types
  * Copyright(c) 2014 Jonathan Ong
@@ -60403,6 +61421,7 @@ function requireMimeTypes () {
 
 		var db = requireMimeDb();
 		var extname = path__default.extname;
+		var mimeScore = requireMimeScore();
 
 		/**
 		 * Module variables.
@@ -60424,6 +61443,7 @@ function requireMimeTypes () {
 		exports.extensions = Object.create(null);
 		exports.lookup = lookup;
 		exports.types = Object.create(null);
+		exports._extensionConflicts = [];
 
 		// Populate the extensions/types maps
 		populateMaps(exports.extensions, exports.types);
@@ -60432,7 +61452,7 @@ function requireMimeTypes () {
 		 * Get the default charset for a MIME type.
 		 *
 		 * @param {string} type
-		 * @return {boolean|string}
+		 * @return {false|string}
 		 */
 
 		function charset (type) {
@@ -60460,7 +61480,7 @@ function requireMimeTypes () {
 		 * Create a full Content-Type header given a MIME type or extension.
 		 *
 		 * @param {string} str
-		 * @return {boolean|string}
+		 * @return {false|string}
 		 */
 
 		function contentType (str) {
@@ -60469,9 +61489,7 @@ function requireMimeTypes () {
 		    return false
 		  }
 
-		  var mime = str.indexOf('/') === -1
-		    ? exports.lookup(str)
-		    : str;
+		  var mime = str.indexOf('/') === -1 ? exports.lookup(str) : str;
 
 		  if (!mime) {
 		    return false
@@ -60490,7 +61508,7 @@ function requireMimeTypes () {
 		 * Get the default extension for a MIME type.
 		 *
 		 * @param {string} type
-		 * @return {boolean|string}
+		 * @return {false|string}
 		 */
 
 		function extension (type) {
@@ -60515,7 +61533,7 @@ function requireMimeTypes () {
 		 * Lookup the MIME type for a file path/extension.
 		 *
 		 * @param {string} path
-		 * @return {boolean|string}
+		 * @return {false|string}
 		 */
 
 		function lookup (path) {
@@ -60526,7 +61544,7 @@ function requireMimeTypes () {
 		  // get the extension ("ext" or ".ext" or full path)
 		  var extension = extname('x.' + path)
 		    .toLowerCase()
-		    .substr(1);
+		    .slice(1);
 
 		  if (!extension) {
 		    return false
@@ -60541,9 +61559,6 @@ function requireMimeTypes () {
 		 */
 
 		function populateMaps (extensions, types) {
-		  // source preference (least -> most)
-		  var preference = ['nginx', 'apache', undefined, 'iana'];
-
 		  Object.keys(db).forEach(function forEachMimeType (type) {
 		    var mime = db[type];
 		    var exts = mime.extensions;
@@ -60558,22 +61573,48 @@ function requireMimeTypes () {
 		    // extension -> mime
 		    for (var i = 0; i < exts.length; i++) {
 		      var extension = exts[i];
+		      types[extension] = _preferredType(extension, types[extension], type);
 
-		      if (types[extension]) {
-		        var from = preference.indexOf(db[types[extension]].source);
-		        var to = preference.indexOf(mime.source);
-
-		        if (types[extension] !== 'application/octet-stream' &&
-		          (from > to || (from === to && types[extension].substr(0, 12) === 'application/'))) {
-		          // skip the remapping
-		          continue
-		        }
+		      // DELETE (eventually): Capture extension->type maps that change as a
+		      // result of switching to mime-score.  This is just to help make reviewing
+		      // PR #119 easier, and can be removed once that PR is approved.
+		      const legacyType = _preferredTypeLegacy(
+		        extension,
+		        types[extension],
+		        type
+		      );
+		      if (legacyType !== types[extension]) {
+		        exports._extensionConflicts.push([extension, legacyType, types[extension]]);
 		      }
-
-		      // set the extension -> mime
-		      types[extension] = type;
 		    }
 		  });
+		}
+
+		// Resolve type conflict using mime-score
+		function _preferredType (ext, type0, type1) {
+		  var score0 = type0 ? mimeScore(type0, db[type0].source) : 0;
+		  var score1 = type1 ? mimeScore(type1, db[type1].source) : 0;
+
+		  return score0 > score1 ? type0 : type1
+		}
+
+		// Resolve type conflict using pre-mime-score logic
+		function _preferredTypeLegacy (ext, type0, type1) {
+		  var SOURCE_RANK = ['nginx', 'apache', undefined, 'iana'];
+
+		  var score0 = type0 ? SOURCE_RANK.indexOf(db[type0].source) : 0;
+		  var score1 = type1 ? SOURCE_RANK.indexOf(db[type1].source) : 0;
+
+		  if (
+		    exports.types[extension] !== 'application/octet-stream' &&
+		    (score0 > score1 ||
+		      (score0 === score1 &&
+		        exports.types[extension]?.slice(0, 12) === 'application/'))
+		  ) {
+		    return type0
+		  }
+
+		  return score0 > score1 ? type0 : type1
 		} 
 	} (mimeTypes));
 	return mimeTypes;
