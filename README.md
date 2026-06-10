@@ -48,7 +48,7 @@ A very basic configuration for publishing files from a `public` directory to a
 bucket called `my-bucket-name`:
 
 ```yaml
-- uses: osiegmar/s3-publisher-action@v2
+- uses: osiegmar/s3-publisher-action@v3
   with:
     bucket: my-bucket-name
     dir: public
@@ -95,7 +95,7 @@ jobs:
           role-to-assume: arn:aws:iam::XXXXXXXXXXXX:role/github-actions
           aws-region: eu-central-1
 
-      - uses: osiegmar/s3-publisher-action@v2
+      - uses: osiegmar/s3-publisher-action@v3
         with:
           bucket: my-bucket-name
           dir: ./public
@@ -108,7 +108,7 @@ You can also use GitHubs
 feature to configure authentication manually. **This is not recommended!**
 
 ```yaml
-- uses: osiegmar/s3-publisher-action@v2
+- uses: osiegmar/s3-publisher-action@v3
   with:
     bucket: my-bucket-name
     dir: ./public
@@ -216,7 +216,7 @@ uploaded or deleted.
 **Include specific directories and exclude certain file types:**
 
 ```yaml
-- uses: osiegmar/s3-publisher-action@v2
+- uses: osiegmar/s3-publisher-action@v3
   with:
     bucket: my-bucket-name
     dir: public
@@ -232,7 +232,7 @@ uploaded or deleted.
 headers, use short cache times for HTML, and clean up orphaned files:**
 
 ```yaml
-- uses: osiegmar/s3-publisher-action@v2
+- uses: osiegmar/s3-publisher-action@v3
   with:
     bucket: my-bucket-name
     dir: public
