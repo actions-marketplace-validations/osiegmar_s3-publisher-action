@@ -10,6 +10,20 @@ and this project adheres to
 
 - Nothing yet
 
+## [3.0.0] - 2026-06-10
+
+### Changed
+
+- **BREAKING**: Upgraded `mime-types` to v3, which aligns the resolved
+  Content-Type of some file extensions with current standards. Most notably,
+  `.js`/`.mjs` files now resolve to `text/javascript` (previously
+  `application/javascript`). Files re-published after upgrading will have their
+  Content-Type metadata updated accordingly.
+- Updated all other dependencies (including `@types/node` to v24 and `globals`
+  to v17)
+- Clarify in the docs that the `s3:DeleteObject` permission is only required
+  when using `delete-orphaned`
+
 ## [2.0.0] - 2026-02-28
 
 ### Changed
@@ -53,7 +67,8 @@ and this project adheres to
 - Initial release
 
 [Unreleased]:
-  https://github.com/osiegmar/s3-publisher-action/compare/v2.0.0...main
+  https://github.com/osiegmar/s3-publisher-action/compare/v3.0.0...main
+[3.0.0]: https://github.com/osiegmar/s3-publisher-action/compare/v2.0.1...v3.0.0
 [2.0.0]: https://github.com/osiegmar/s3-publisher-action/compare/v1.1.1...v2.0.0
 [1.1.1]: https://github.com/osiegmar/s3-publisher-action/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/osiegmar/s3-publisher-action/compare/v1.0.0...v1.1.0
