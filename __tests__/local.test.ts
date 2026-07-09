@@ -1,12 +1,14 @@
 import { jest } from '@jest/globals'
 
 const mockDebug = jest.fn()
+const mockIsDebug = jest.fn().mockReturnValue(false)
 
 const mockReaddirSync = jest.fn()
 const mockLstatSync = jest.fn()
 
 jest.unstable_mockModule('@actions/core', () => ({
-  debug: mockDebug
+  debug: mockDebug,
+  isDebug: mockIsDebug
 }))
 
 jest.unstable_mockModule('fs', () => ({
@@ -48,6 +50,35 @@ describe('globFilter', () => {
   it('should support matchBase (filename-only globs match in subdirs)', () => {
     const filter = globFilter(['*.html'], [])
     expect(filter('sub/dir/page.html')).toBe(true)
+  })
+
+  it('should not log when debug logging is disabled', () => {
+    mockDebug.mockClear()
+    mockIsDebug.mockReturnValue(false)
+    const filter = globFilter(['*.html'], ['vendor.js'])
+    filter('index.html')
+    filter('vendor.js')
+    filter('style.css')
+    expect(mockDebug).not.toHaveBeenCalled()
+  })
+
+  it('should log per file when debug logging is enabled', () => {
+    mockDebug.mockClear()
+    mockIsDebug.mockReturnValue(true)
+    const filter = globFilter(['*.html'], [])
+    filter('index.html')
+    expect(mockDebug).toHaveBeenCalledTimes(1)
+    mockIsDebug.mockReturnValue(false)
+  })
+
+  it('should never log when logging is turned off, even in debug mode', () => {
+    mockDebug.mockClear()
+    mockIsDebug.mockReturnValue(true)
+    const filter = globFilter(['*.html'], [], false)
+    filter('index.html')
+    filter('style.css')
+    expect(mockDebug).not.toHaveBeenCalled()
+    mockIsDebug.mockReturnValue(false)
   })
 })
 

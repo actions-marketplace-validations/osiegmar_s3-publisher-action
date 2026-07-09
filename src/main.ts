@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import * as fs from 'fs'
 import { performance } from 'perf_hooks'
 import { globFilter, listLocalFiles, sortByGlob } from './local.js'
+import { debug } from './log.js'
 import { S3 } from './s3.js'
 import {
   CacheControl,
@@ -83,8 +84,10 @@ async function sync(): Promise<void> {
     )
 
     const allRemoteFiles = await remoteFilesPromise
+    // never log per-file on the remote set — it is unbounded (issue #124)
+    const remoteFilter = globFilter(config.includes, config.excludes, false)
     remoteFiles = Object.fromEntries(
-      Object.entries(allRemoteFiles).filter(([key]) => filter(key))
+      Object.entries(allRemoteFiles).filter(([key]) => remoteFilter(key))
     )
     const allRemoteCount = Object.keys(allRemoteFiles).length
     const remoteCount = Object.keys(remoteFiles).length
@@ -212,27 +215,27 @@ export function diffFiles(
     localFilenames.add(localFilename)
     const remoteFile = remoteFiles[localFilename]
     if (!remoteFile) {
-      core.debug(`Add new file to list ${localFilename}`)
+      debug(`Add new file to list ${localFilename}`)
       newFiles.push(syncFile)
     } else if (config.force) {
-      core.debug(`Add file to list (force upload) ${localFilename}`)
+      debug(`Add file to list (force upload) ${localFilename}`)
       modifiedFiles.push(syncFile)
     } else {
       const reason = fileChangeReason(syncFile, remoteFile)
       if (reason) {
-        core.debug(`Modified (${reason}): ${localFilename}`)
+        debug(`Modified (${reason}): ${localFilename}`)
         modifiedFiles.push(syncFile)
       } else {
-        core.debug(`Unchanged: ${localFilename}`)
+        debug(`Unchanged: ${localFilename}`)
       }
     }
   }
 
-  // Determine orphaned files (always, regardless of deleteOrphan setting)
+  // Determine orphaned files (always, regardless of deleteOrphan setting).
+  // No per-file logging here — the remote set is unbounded (issue #124).
   const deletedFiles: string[] = []
   for (const remoteFile of Object.keys(remoteFiles)) {
     if (!localFilenames.has(remoteFile)) {
-      core.debug(`Add orphaned file to list ${remoteFile}`)
       deletedFiles.push(remoteFile)
     }
   }

@@ -3,6 +3,7 @@ import { jest } from '@jest/globals'
 const mockSend = jest.fn()
 const mockInfo = jest.fn()
 const mockDebug = jest.fn()
+const mockIsDebug = jest.fn().mockReturnValue(false)
 const mockError = jest.fn()
 const MockDeleteObjectsCommand = jest
   .fn()
@@ -15,6 +16,7 @@ const MockUpload = jest.fn().mockImplementation(() => ({
 jest.unstable_mockModule('@actions/core', () => ({
   info: mockInfo,
   debug: mockDebug,
+  isDebug: mockIsDebug,
   error: mockError
 }))
 
@@ -112,6 +114,39 @@ describe('S3', () => {
       expect(Object.keys(files)).toHaveLength(0)
     })
 
+    it('should not emit per-page debug output when debug is disabled', async () => {
+      mockSend.mockResolvedValueOnce({
+        $metadata: { httpStatusCode: 200 },
+        IsTruncated: false,
+        Contents: [{ Key: 'file1.html', Size: 100, ETag: '"abc"' }]
+      })
+
+      const s3 = new S3('my-bucket', '', [], false)
+      await s3.listRemoteFiles()
+
+      expect(mockDebug).not.toHaveBeenCalled()
+    })
+
+    it('should emit per-page debug output when debug is enabled', async () => {
+      mockIsDebug.mockReturnValue(true)
+      try {
+        mockSend.mockResolvedValueOnce({
+          $metadata: { httpStatusCode: 200 },
+          IsTruncated: false,
+          Contents: [{ Key: 'file1.html', Size: 100, ETag: '"abc"' }]
+        })
+
+        const s3 = new S3('my-bucket', '', [], false)
+        await s3.listRemoteFiles()
+
+        expect(mockDebug).toHaveBeenCalledWith(
+          expect.stringContaining('(page 1)')
+        )
+      } finally {
+        mockIsDebug.mockReturnValue(false)
+      }
+    })
+
     it('should skip entries with undefined Key', async () => {
       mockSend.mockResolvedValueOnce({
         $metadata: { httpStatusCode: 200 },
@@ -187,6 +222,20 @@ describe('S3', () => {
       )
     })
 
+    it('should not debug-log upload progress when debug is disabled', async () => {
+      const sf = new SyncFile('file.html')
+      Object.defineProperty(sf, 'size', { get: () => 100 })
+
+      const s3 = new S3('my-bucket', '', [], false)
+      await s3.uploadFiles([sf])
+
+      const upload = MockUpload.mock.results[0].value as { on: jest.Mock }
+      const listener = upload.on.mock.calls[0][1] as (p: unknown) => void
+      listener({ loaded: 50, total: 100 })
+
+      expect(mockDebug).not.toHaveBeenCalled()
+    })
+
     it('should propagate upload errors', async () => {
       MockUpload.mockImplementationOnce(() => ({
         on: jest.fn(),
@@ -259,6 +308,37 @@ describe('S3', () => {
       await s3.deleteFiles(files)
 
       expect(mockSend).toHaveBeenCalledTimes(3)
+    })
+
+    it('should log aggregate counts instead of keys for large delete sets', async () => {
+      const files = Array.from({ length: 1500 }, (_, i) => `file${i}.html`)
+      mockSend
+        .mockResolvedValueOnce({
+          Deleted: files.slice(0, 1000).map((Key) => ({ Key }))
+        })
+        .mockResolvedValueOnce({
+          Deleted: files.slice(1000).map((Key) => ({ Key }))
+        })
+
+      const s3 = new S3('my-bucket', '', [], false)
+      await s3.deleteFiles(files)
+
+      expect(mockInfo).toHaveBeenCalledWith('S3: Deleted 1000 of 1500 files')
+      expect(mockInfo).toHaveBeenCalledWith('S3: Deleted 1500 of 1500 files')
+      expect(mockInfo).not.toHaveBeenCalledWith('S3: Deleted file0.html')
+    })
+
+    it('should log an aggregate line for large delete sets in dry-run mode', async () => {
+      const files = Array.from({ length: 1001 }, (_, i) => `file${i}.html`)
+
+      const s3 = new S3('my-bucket', 'site/', [], true)
+      await s3.deleteFiles(files)
+
+      expect(mockSend).not.toHaveBeenCalled()
+      expect(mockInfo).toHaveBeenCalledTimes(1)
+      expect(mockInfo).toHaveBeenCalledWith(
+        'S3: [DRY RUN] Deleting 1001 files from s3://my-bucket/site/'
+      )
     })
 
     it('should throw on partial delete failures', async () => {

@@ -1,7 +1,7 @@
-import * as core from '@actions/core'
 import * as fs from 'fs'
 import * as path from 'path'
 import picomatch from 'picomatch'
+import { debug } from './log.js'
 import { GLOB_OPTIONS, SyncFile } from './types.js'
 
 export function listLocalFiles(
@@ -23,7 +23,8 @@ export function listLocalFiles(
 
 export function globFilter(
   includes: string[],
-  excludes: string[]
+  excludes: string[],
+  logDebug = true
 ): (p: string) => boolean {
   const excludeMatchers = excludes.map((e) => ({
     pattern: e,
@@ -36,17 +37,17 @@ export function globFilter(
   return (p: string) => {
     for (const { pattern, match } of excludeMatchers) {
       if (match(p)) {
-        core.debug(`File ${p} excluded by exclude glob ${pattern}`)
+        if (logDebug) debug(`File ${p} excluded by exclude glob ${pattern}`)
         return false
       }
     }
     for (const { pattern, match } of includeMatchers) {
       if (match(p)) {
-        core.debug(`File ${p} included by include glob ${pattern}`)
+        if (logDebug) debug(`File ${p} included by include glob ${pattern}`)
         return true
       }
     }
-    core.debug(`File ${p} excluded (no glob matched)`)
+    if (logDebug) debug(`File ${p} excluded (no glob matched)`)
     return false
   }
 }

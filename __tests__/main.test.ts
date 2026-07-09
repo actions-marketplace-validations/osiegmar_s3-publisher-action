@@ -1,6 +1,7 @@
 import { jest } from '@jest/globals'
 
 const mockDebug = jest.fn()
+const mockIsDebug = jest.fn().mockReturnValue(false)
 const mockInfo = jest.fn()
 const mockWarning = jest.fn()
 const mockStartGroup = jest.fn()
@@ -21,6 +22,7 @@ const mockDeleteFiles = jest.fn().mockResolvedValue(undefined)
 
 jest.unstable_mockModule('@actions/core', () => ({
   debug: mockDebug,
+  isDebug: mockIsDebug,
   info: mockInfo,
   warning: mockWarning,
   startGroup: mockStartGroup,
@@ -320,6 +322,34 @@ describe('diffFiles', () => {
     expect(result.deletedFiles).toEqual(['old.html'])
   })
 
+  it('should not debug-log files when debug logging is disabled', () => {
+    const local = [makeSyncFile('new.html', 100, 'abc')]
+    const remoteFiles = {
+      'orphan.html': { size: 50, etag: 'xyz' }
+    }
+
+    diffFiles(local, remoteFiles, makeConfig())
+
+    expect(mockDebug).not.toHaveBeenCalled()
+  })
+
+  it('should never log per orphaned file, even in debug mode', () => {
+    mockIsDebug.mockReturnValue(true)
+    try {
+      const remoteFiles = {
+        'orphan1.html': { size: 50, etag: 'xyz' },
+        'orphan2.html': { size: 60, etag: 'abc' }
+      }
+
+      const result = diffFiles([], remoteFiles, makeConfig())
+
+      expect(result.deletedFiles).toHaveLength(2)
+      expect(mockDebug).not.toHaveBeenCalled()
+    } finally {
+      mockIsDebug.mockReturnValue(false)
+    }
+  })
+
   it('should handle mixed new, modified, unchanged, and orphaned', () => {
     const local = [
       makeSyncFile('new.html', 100, 'aaa'),
@@ -581,6 +611,39 @@ describe('run', () => {
     expect(mockSetFailed).not.toHaveBeenCalled()
     expect(mockUploadFiles).toHaveBeenCalled()
     expect(mockDeleteFiles).toHaveBeenCalledWith(['old.html'])
+  })
+
+  it('should not debug-log remote files even in debug mode', async () => {
+    mockIsDebug.mockReturnValue(true)
+    try {
+      mockExistsSync.mockReturnValue(true)
+      mockStatSync.mockImplementation((p: string) => {
+        if (p === '/some/dir') return { isDirectory: () => true }
+        return { size: 100 }
+      })
+      mockReaddirSync.mockImplementation((dirPath: string) => {
+        if (dirPath === '.') return ['index.html']
+        return []
+      })
+      mockLstatSync.mockReturnValue({
+        isDirectory: () => false,
+        isFile: () => true
+      })
+      mockGenerateETag.mockReturnValue('abc123')
+      mockListRemoteFiles.mockResolvedValue({
+        'index.html': { size: 100, etag: 'abc123' },
+        'old.html': { size: 50, etag: 'xyz' }
+      })
+
+      await run()
+
+      expect(mockSetFailed).not.toHaveBeenCalled()
+      const debugged = mockDebug.mock.calls.map((c) => String(c[0])).join('\n')
+      expect(debugged).toContain('index.html')
+      expect(debugged).not.toContain('old.html')
+    } finally {
+      mockIsDebug.mockReturnValue(false)
+    }
   })
 
   it('should warn about orphaned files when delete-orphaned is disabled', async () => {

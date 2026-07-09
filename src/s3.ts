@@ -20,6 +20,10 @@ import {
 } from './types.js'
 import { mapLimit } from 'async'
 import { Upload } from '@aws-sdk/lib-storage'
+import { debug } from './log.js'
+
+// Max number of deletions logged individually (aggregate counts beyond this)
+const MAX_LOGGED_DELETES = 1000
 
 export class S3 {
   private readonly client: S3Client
@@ -84,7 +88,7 @@ export class S3 {
       }
 
       page++
-      core.debug(`S3: Listed ${count} remote objects so far (page ${page})`)
+      debug(`S3: Listed ${count} remote objects so far (page ${page})`)
 
       if (!response.IsTruncated) {
         break
@@ -146,7 +150,7 @@ export class S3 {
         progress.loaded < progress.total
       ) {
         const pct = Math.floor((progress.loaded / progress.total) * 100)
-        core.debug(`S3: Uploaded ${pct} % of ${destFile}`)
+        debug(`S3: Uploaded ${pct} % of ${destFile}`)
       }
     })
 
@@ -169,16 +173,27 @@ export class S3 {
   }
 
   async deleteFiles(remoteFiles: string[]): Promise<void> {
+    // Listing every key would flood stdout on huge orphan sets (issue #124)
+    const logKeys = remoteFiles.length <= MAX_LOGGED_DELETES
+
     if (this.dryRun) {
-      for (const file of remoteFiles) {
+      if (logKeys) {
+        for (const file of remoteFiles) {
+          core.info(
+            `S3: ${this.dryPrefix}Deleting s3://${this.bucket}/${this.prefix}${file}`
+          )
+        }
+      } else {
         core.info(
-          `S3: ${this.dryPrefix}Deleting s3://${this.bucket}/${this.prefix}${file}`
+          `S3: ${this.dryPrefix}Deleting ${remoteFiles.length} files` +
+            ` from s3://${this.bucket}/${this.prefix}`
         )
       }
       return
     }
 
     const batchSize = 1000
+    let deleted = 0
     for (let i = 0; i < remoteFiles.length; i += batchSize) {
       const batch = remoteFiles.slice(i, i + batchSize)
       const response = await this.client.send(
@@ -190,8 +205,13 @@ export class S3 {
         })
       )
 
-      for (const e of response.Deleted ?? []) {
-        core.info(`S3: Deleted ${e.Key}`)
+      deleted += response.Deleted?.length ?? 0
+      if (logKeys) {
+        for (const e of response.Deleted ?? []) {
+          core.info(`S3: Deleted ${e.Key}`)
+        }
+      } else {
+        core.info(`S3: Deleted ${deleted} of ${remoteFiles.length} files`)
       }
 
       if (response.Errors && response.Errors.length > 0) {

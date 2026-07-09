@@ -28202,11 +28202,20 @@ function setFailed(message) {
     process.exitCode = ExitCode.Failure;
     error(message);
 }
+//-----------------------------------------------------------------------
+// Logging Commands
+//-----------------------------------------------------------------------
+/**
+ * Gets whether Actions Step Debug is on or not
+ */
+function isDebug() {
+    return process.env['RUNNER_DEBUG'] === '1';
+}
 /**
  * Writes debug message to user log
  * @param message debug message
  */
-function debug(message) {
+function debug$1(message) {
     issueCommand('debug', {}, message);
 }
 /**
@@ -30703,6 +30712,14 @@ function requirePicomatch () {
 var picomatchExports = /*@__PURE__*/ requirePicomatch();
 var picomatch = /*@__PURE__*/getDefaultExportFromCjs(picomatchExports);
 
+// core.debug() writes to stdout even when debug logging is disabled;
+// unguarded per-file logging can crash Node on huge file sets (issue #124)
+function debug(message) {
+    if (isDebug()) {
+        debug$1(message);
+    }
+}
+
 /**
  * Generate an S3 ETAG (with multipart support)
  * An implementation of this algorithm: https://stackoverflow.com/a/19896823/492325
@@ -30792,7 +30809,7 @@ function listLocalFiles(dirPath, results = []) {
     }
     return results;
 }
-function globFilter(includes, excludes) {
+function globFilter(includes, excludes, logDebug = true) {
     const excludeMatchers = excludes.map((e) => ({
         pattern: e,
         match: picomatch(e, GLOB_OPTIONS)
@@ -30804,17 +30821,20 @@ function globFilter(includes, excludes) {
     return (p) => {
         for (const { pattern, match } of excludeMatchers) {
             if (match(p)) {
-                debug(`File ${p} excluded by exclude glob ${pattern}`);
+                if (logDebug)
+                    debug(`File ${p} excluded by exclude glob ${pattern}`);
                 return false;
             }
         }
         for (const { pattern, match } of includeMatchers) {
             if (match(p)) {
-                debug(`File ${p} included by include glob ${pattern}`);
+                if (logDebug)
+                    debug(`File ${p} included by include glob ${pattern}`);
                 return true;
             }
         }
-        debug(`File ${p} excluded (no glob matched)`);
+        if (logDebug)
+            debug(`File ${p} excluded (no glob matched)`);
         return false;
     };
 }
@@ -64807,6 +64827,8 @@ to input.params.ContentLength in bytes.
     }
 }
 
+// Max number of deletions logged individually (aggregate counts beyond this)
+const MAX_LOGGED_DELETES = 1000;
 class S3 {
     client;
     prefix;
@@ -64922,13 +64944,22 @@ class S3 {
         return undefined;
     }
     async deleteFiles(remoteFiles) {
+        // Listing every key would flood stdout on huge orphan sets (issue #124)
+        const logKeys = remoteFiles.length <= MAX_LOGGED_DELETES;
         if (this.dryRun) {
-            for (const file of remoteFiles) {
-                info(`S3: ${this.dryPrefix}Deleting s3://${this.bucket}/${this.prefix}${file}`);
+            if (logKeys) {
+                for (const file of remoteFiles) {
+                    info(`S3: ${this.dryPrefix}Deleting s3://${this.bucket}/${this.prefix}${file}`);
+                }
+            }
+            else {
+                info(`S3: ${this.dryPrefix}Deleting ${remoteFiles.length} files` +
+                    ` from s3://${this.bucket}/${this.prefix}`);
             }
             return;
         }
         const batchSize = 1000;
+        let deleted = 0;
         for (let i = 0; i < remoteFiles.length; i += batchSize) {
             const batch = remoteFiles.slice(i, i + batchSize);
             const response = await this.client.send(new DeleteObjectsCommand({
@@ -64937,8 +64968,14 @@ class S3 {
                     Objects: batch.map((fn) => ({ Key: this.prefix + fn }))
                 }
             }));
-            for (const e of response.Deleted ?? []) {
-                info(`S3: Deleted ${e.Key}`);
+            deleted += response.Deleted?.length ?? 0;
+            if (logKeys) {
+                for (const e of response.Deleted ?? []) {
+                    info(`S3: Deleted ${e.Key}`);
+                }
+            }
+            else {
+                info(`S3: Deleted ${deleted} of ${remoteFiles.length} files`);
             }
             if (response.Errors && response.Errors.length > 0) {
                 const keys = response.Errors.map((e) => e.Key).join(', ');
@@ -64989,7 +65026,9 @@ async function sync() {
                 ? ` (filtered from ${allLocalFiles.length} total)`
                 : ''));
         const allRemoteFiles = await remoteFilesPromise;
-        remoteFiles = Object.fromEntries(Object.entries(allRemoteFiles).filter(([key]) => filter(key)));
+        // never log per-file on the remote set — it is unbounded (issue #124)
+        const remoteFilter = globFilter(config.includes, config.excludes, false);
+        remoteFiles = Object.fromEntries(Object.entries(allRemoteFiles).filter(([key]) => remoteFilter(key)));
         const allRemoteCount = Object.keys(allRemoteFiles).length;
         const remoteCount = Object.keys(remoteFiles).length;
         info(`Found ${remoteCount} relevant remote files` +
@@ -65095,11 +65134,11 @@ function diffFiles(syncFiles, remoteFiles, config) {
             }
         }
     }
-    // Determine orphaned files (always, regardless of deleteOrphan setting)
+    // Determine orphaned files (always, regardless of deleteOrphan setting).
+    // No per-file logging here — the remote set is unbounded (issue #124).
     const deletedFiles = [];
     for (const remoteFile of Object.keys(remoteFiles)) {
         if (!localFilenames.has(remoteFile)) {
-            debug(`Add orphaned file to list ${remoteFile}`);
             deletedFiles.push(remoteFile);
         }
     }
